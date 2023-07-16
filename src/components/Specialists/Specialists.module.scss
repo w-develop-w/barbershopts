@@ -1,0 +1,91 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+    .modal {
+        background-color: rgb(199, 199, 199);
+        padding: 50px;
+        border-radius: 20px;
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 500px;
+            padding: 0 10px;
+            overflow-x: auto;
+
+            .item {
+                list-style: none;
+                padding: 15px 30px;
+                border-radius: 20px;
+                background-color: white;
+                .content {
+                    display: flex;
+                    gap: 20px;
+
+                    img {
+                        width: 150px;
+                        height: 90px;
+                        border-radius: 15px;
+                    }
+
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        h3,
+                        h2 {
+                            text-transform: uppercase;
+                            margin: 0;
+                        }
+
+                        h3 {
+                            text-transform: uppercase;
+                            font-size: 14px;
+                        }
+
+                        h2 {
+                            text-transform: uppercase;
+                            font-size: 18px;
+                        }
+
+                        div {
+                            margin-top: 10px;
+                            ul {
+                                padding: 0;
+                                display: flex;
+                                gap: 10px;
+                                li {
+                                    padding: 0;
+                                    all: unset;
+                                    button {
+                                        all: unset;
+                                        border-radius: 10px;
+                                        padding: 5px 10px;
+                                        margin-top: 5px;
+                                        margin-right: 10px;
+                                        background-color: rgb(199, 199, 199);
+                                        transition: 0.3s;
+
+                                        &:hover {
+                                            color: white;
+                                            cursor: pointer;
+                                            background-color: rgb(
+                                                121,
+                                                120,
+                                                120
+                                            );
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

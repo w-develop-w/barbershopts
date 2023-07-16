@@ -1,0 +1,42 @@
+.container {
+    display: flex;
+    align-items: center; /* Центрирует контент вертикально */
+    justify-content: center; /* Центрирует контент горизонтально */
+    height: 100vh; /* Занимает 100% высоты экрана */
+
+    .modal {
+        background-color: rgb(199, 199, 199);
+        padding: 70px;
+        border-radius: 20px;
+
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-height: 400px;
+            padding: 0 10px;
+            overflow-x: auto;
+
+            .item {
+                list-style: none;
+                padding: 15px 200px;
+                border-radius: 20px;
+                background-color: white;
+                // align-items: flex-start;
+                h3 {
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    margin: 0;
+                }
+                
+                h2 {
+                    text-transform: uppercase;
+                    font-size: 20px;
+                    margin: 0;
+                    color: red;
+                }
+
+            }
+        }
+    }
+}
