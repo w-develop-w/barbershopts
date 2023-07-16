@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    align-items: center; /* Центрирует контент вертикально */
+    justify-content: center; /* Центрирует контент горизонтально */
+    height: 100vh; /* Занимает 100% высоты экрана */
+
+    .modal {
+        // height: 500px;
+        // width: 500px;
+        background-color: rgb(199, 199, 199);
+        padding: 90px;
+        border-radius: 20px;
+
+        
+        ul {
+            all: unset;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            li {
+                all: unset;
+                button {
+                    all: unset;
+                    text-transform: uppercase;
+                    font-family: "Franklin Gothic Medium", "Arial Narrow", Arial,
+                    sans-serif;
+                    // font-family: Verdana, Geneva, Tahoma, sans-serif;
+                    width: 300px;
+                    background-color: white;
+                    padding: 10px 20px;
+                    border-radius: 10px;
+                    transition: 0.3s;
+
+                    &:hover {
+                        background-color: rgb(121, 121, 121);
+                    }
+                }
+            }
+        }
+    }
+}
