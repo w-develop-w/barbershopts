@@ -14,7 +14,11 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main/>} />
                     <Route path="/specialists" element={<Specialists/>} />
+                    <Route path="/services/specialists" element={<Specialists/>} />
+                    <Route path="/services/specialists/recording" element={<Recording/>} />
                     <Route path="/services" element={<Services/>} />
+                    <Route path="/specialists/services" element={<Services/>} />
+                    <Route path="/specialists/services/recording" element={<Recording/>} />
                     <Route path="/dateAndTime" element={<DateAndTime/>} />
                 </Routes>
             </div>

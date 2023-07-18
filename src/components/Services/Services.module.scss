@@ -17,25 +17,33 @@
             padding: 0 10px;
             overflow-x: auto;
 
-            .item {
-                list-style: none;
-                padding: 15px 200px;
-                border-radius: 20px;
-                background-color: white;
-                // align-items: flex-start;
-                h3 {
-                    text-transform: uppercase;
-                    font-size: 20px;
-                    margin: 0;
-                }
-                
-                h2 {
-                    text-transform: uppercase;
-                    font-size: 20px;
-                    margin: 0;
-                    color: red;
-                }
+            .link {
+                all: unset;
+                .item {
+                    list-style: none;
+                    padding: 15px 200px;
+                    border-radius: 20px;
+                    background-color: white;
+                    // align-items: flex-start;
 
+                    &:hover {
+                        cursor: pointer;
+                    }
+
+                    h3 {
+                        text-transform: uppercase;
+                        font-size: 20px;
+                        margin: 0;
+                    }
+                    
+                    h2 {
+                        text-transform: uppercase;
+                        font-size: 20px;
+                        margin: 0;
+                        color: red;
+                    }
+    
+                }
             }
         }
     }

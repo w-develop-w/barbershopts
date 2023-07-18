@@ -26,6 +26,11 @@
                     padding: 10px 20px;
                     transition: 0.3s;
                     &:hover {
+                        cursor: pointer;
+                        background-color: rgb(181, 181, 181);
+                    }
+
+                    &.active {
                         color: white;
                         background-color: rgb(
                             121,
@@ -51,6 +56,11 @@
                     padding: 10px 20px;
 
                     &:hover {
+                        cursor: pointer;
+                        background-color: rgb(181, 181, 181);
+                    }
+
+                    &.active {
                         color: white;
                         background-color: rgb(
                             121,

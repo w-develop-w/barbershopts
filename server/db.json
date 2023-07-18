@@ -2,7 +2,7 @@
     "barbers": [
         {
             "id": 1,
-            "image":"img/barber-1.jpg",
+            "image":"/img/barber-1.jpg",
             "name": "Alexey Rudov",
             "status": "Barber",
             "datesAndTime": [
@@ -16,7 +16,7 @@
         },
         {
             "id": 2,
-            "image":"img/barber-2.jpg",
+            "image":"/img/barber-2.jpg",
             "name": "Mark Socar",
             "status": "Top barber",
             "datesAndTime": [
@@ -30,7 +30,7 @@
         },
         {
             "id": 3,
-            "image":"img/barber-3.jpg",
+            "image":"/img/barber-3.jpg",
             "name": "Evgeny Linkevich",
             "status": "Grand barber",
             "datesAndTime": [
