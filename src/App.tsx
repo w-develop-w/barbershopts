@@ -1,8 +1,7 @@
 import React from "react"
 import Main from "./components/Main/Main";
-// import DateAndTime from "./components/DateAndTime/DateAndTime";
-// import Main from "./components/Main/Main";
-// import Recording from "./components/Recording/Recording";
+import DateAndTime from "./components/DateAndTime/DateAndTime";
+import Recording from "./components/Recording/Recording";
 import Services from "./components/Services/Services";
 import Specialists from "./components/Specialists/Specialists";
 

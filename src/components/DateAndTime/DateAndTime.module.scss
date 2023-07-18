@@ -1,0 +1,66 @@
+.container {
+    display: flex;
+    align-items: center; /* Центрирует контент вертикально */
+    justify-content: center; /* Центрирует контент горизонтально */
+    height: 100vh; /* Занимает 100% высоты экрана */
+
+    .modal {
+        background-color: rgb(199, 199, 199);
+        padding: 90px;
+        border-radius: 20px;
+
+        h3 {
+            text-transform: uppercase;
+        }
+
+        .listDate {
+            padding: 0;
+            .itemDate {
+                display: flex;
+                gap: 10px;
+                list-style: none;
+                
+                button {
+                    border: none;
+                    border-radius: 20px;
+                    padding: 10px 20px;
+                    transition: 0.3s;
+
+                    &:hover {
+                        color: white;
+                        background-color: rgb(
+                            121,
+                            120,
+                            120
+                        );
+                    }
+                }
+            }
+        }
+        
+        .listTime {
+            padding: 0;
+            .itemTime {
+                display: flex;
+                gap: 10px;
+                list-style: none;
+                transition: 0.3s;
+
+                button {
+                    border: none;
+                    border-radius: 20px;
+                    padding: 10px 20px;
+
+                    &:hover {
+                        color: white;
+                        background-color: rgb(
+                            121,
+                            120,
+                            120
+                        );
+                    }
+                }
+            }
+        }
+    }
+}

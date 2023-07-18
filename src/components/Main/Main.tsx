@@ -1,6 +1,6 @@
-import styles from "./Main.module.scss"
-import { Link } from 'react-router-dom';
-
+import React from "react";
+import styles from "./Main.module.scss";
+// import { Link } from 'react-router-dom';
 
 function Main() {
     return (
@@ -9,9 +9,9 @@ function Main() {
                 <h2>Barbershop</h2>
                 <ul>
                     <li>
-                        <Link to="/specialists">
+                        {/* <Link to="/specialists"> */}
                             <button>Specialists</button>
-                        </Link>
+                        {/* </Link> */}
                     </li>
 
                     <li>
@@ -27,4 +27,4 @@ function Main() {
     )
 }
 
-export default Main
+export default Main;
