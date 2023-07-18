@@ -1,24 +1,34 @@
 import React from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useSpecialistsQuery } from "../../api/fetchDataSpecialists"
+import { useServicingQuery } from "../../api/fetchDataServices"
 import { Barbers, DatesAndTime } from "../../models/models"
+import { RootState } from "../../store/store.index"
 import styles from "./Specialists.module.scss"
+import { useSelector } from "react-redux"
 
 function Specialists() {
-    const { data, error, isLoading } = useSpecialistsQuery(null)
+
+    const choosedService = useSelector((state: RootState) => state.dataOfBarbershop.choosedService)
+
+    const { data: dataBarbers, error: errorBarbers, isLoading: isLoadingBarbers } = useSpecialistsQuery(null)
+    const { data: dataServing, error: errorServicing, isLoading: isLoadingServicing } = useServicingQuery(null)
     const location = useLocation() // Получаем текущий путь
 
-    if (isLoading) {
+    // console.log(dataServing)
+    // console.log(data)
+
+    if (isLoadingBarbers) {
         return <div>Loading...</div>
     }
 
-    if (error) {
-        if ("status" in error) {
+    if (errorBarbers) {
+        if ("status" in errorBarbers) {
             // Обработка ошибки FetchBaseQueryError
-            return <div>Error: {error.status}</div>
+            return <div>Error: {errorBarbers.status}</div>
         } else {
             // Обработка ошибки SerializedError
-            return <div>Error: {error.message}</div>
+            return <div>Error: {errorBarbers.message}</div>
         }
     }
 
@@ -37,12 +47,36 @@ function Specialists() {
         }
     }
 
+
+
+    const availableTimeAndDate = (dataBarbers: any, dataServing: any) => {
+        
+        // dataBarbers.map((item: any)  => {
+        //     // console.log(item)
+        //     if(item) {
+
+        //     }
+        // })
+        
+        let timeForService: number = 0
+
+        dataServing.map((item: any) => {
+            if(item.name ===  choosedService) {
+                timeForService = item.time
+            }            
+        })
+
+
+    } 
+
+    // availableTimeAndDate(dataBarbers)
+
     return (
         <div className={styles.container}>
             <div className={styles.modal}>
                 <ul className={styles.list}>
-                    {data &&
-                        data.map((el: Barbers) => (
+                    {dataBarbers &&
+                        dataBarbers.map((el: Barbers) => (
                             <li className={styles.item} key={el.id}>
                                 <div className={styles.content}>
                                     <img src={el.image} alt="Barber" />

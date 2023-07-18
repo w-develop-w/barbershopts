@@ -3,10 +3,24 @@ import styles from "./Services.module.scss";
 import { useServicingQuery } from "../../api/fetchDataServices";
 import { Servicing } from "../../models/models";
 import { Link, useLocation } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store.index"
+import { setChoosedService } from "../../store/dataSlice";
 
 function Services() {
     const { data, error, isLoading } = useServicingQuery(null);
     const location = useLocation(); // Получаем текущий путь
+
+    const dispatch = useDispatch()
+    // const choosedService = useSelector(
+    //     (state: RootState) => state.dataOfBarbershop.choosedService
+    // )
+
+    const handleChoosedServiceClick = (time: string, price: string) => {
+        console.log(time)
+        console.log(price)
+        dispatch(setChoosedService(time))
+    }
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -51,7 +65,7 @@ function Services() {
                                 to={getToPath(location.pathname)} // Устанавливаем правильный путь
                                 key={el.id}
                             >
-                                <li className={styles.item}>
+                                <li className={styles.item} onClick={() => handleChoosedServiceClick(el.name, el.price)}>
                                     <h3>{el.name}</h3>
                                     <h2>{el.price}</h2>
                                 </li>
