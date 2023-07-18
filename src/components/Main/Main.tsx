@@ -1,5 +1,6 @@
-import React from "react";
-import styles from "./Main.module.scss";
+import React from "react"
+import { Link } from "react-router-dom"
+import styles from "./Main.module.scss"
 // import { Link } from 'react-router-dom';
 
 function Main() {
@@ -9,17 +10,21 @@ function Main() {
                 <h2>Barbershop</h2>
                 <ul>
                     <li>
-                        {/* <Link to="/specialists"> */}
+                        <Link className={styles.link} to="specialists">
                             <button>Specialists</button>
-                        {/* </Link> */}
+                        </Link>
                     </li>
 
                     <li>
-                        <button>Service</button>
+                        <Link className={styles.link} to="services">
+                            <button>Service</button>
+                        </Link>
                     </li>
 
                     <li>
-                        <button>Date and time</button>
+                        <Link className={styles.link} to="dateAndTime">
+                            <button>Date and time</button>
+                        </Link>
                     </li>
                 </ul>
             </div>
@@ -27,4 +32,4 @@ function Main() {
     )
 }
 
-export default Main;
+export default Main
