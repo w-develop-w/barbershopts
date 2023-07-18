@@ -7,18 +7,16 @@ interface Service {
     time: number
 }
 
-// interface OtherState {
-// Другие состояния
-// }
-
 interface RootState {
-    allServices: Service[]
-    //   otherState: OtherState;
+    allServices: Service[],
+    recordingDate: string, 
+    recordingTime: string 
 }
 
 const initialState: RootState = {
     allServices: [],
-    //   otherState: /* начальное состояние других состояний */,
+    recordingDate: "",
+    recordingTime: ""
 }
 
 const dataOfBarbershopSlice = createSlice({
@@ -28,9 +26,14 @@ const dataOfBarbershopSlice = createSlice({
         setAllServices: (state, action: PayloadAction<Service[]>) => {
             state.allServices = action.payload
         },
-        // Другие reducers для обновления других состояний
+        setRecordingDate: (state, action: PayloadAction<string>) => {
+            state.recordingDate = action.payload
+        },
+        setRecordingTime: (state, action: PayloadAction<string>) => {
+            state.recordingTime = action.payload
+        }
     },
 })
 
-export const { setAllServices } = dataOfBarbershopSlice.actions
+export const { setAllServices, setRecordingDate, setRecordingTime } = dataOfBarbershopSlice.actions
 export default dataOfBarbershopSlice.reducer

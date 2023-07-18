@@ -25,9 +25,12 @@ function Services() {
     // Функция для определения правильного пути в зависимости от текущего пути
     const getToPath = (currentPath: string): string => {
 
-        // console.log(currentPath)
+        console.log(currentPath)
         if (currentPath === "/specialists/services") {
             return "/specialists/services/recording";
+        } 
+        else if (currentPath === "/dateAndTime/services") {
+            return "/dateAndTime/services/specialists";
         } 
         else if (currentPath === "/services") {
             return "/services/specialists";

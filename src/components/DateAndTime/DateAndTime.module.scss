@@ -19,7 +19,7 @@
                 display: flex;
                 gap: 10px;
                 list-style: none;
-                
+
                 button {
                     border: none;
                     border-radius: 20px;
@@ -32,16 +32,12 @@
 
                     &.active {
                         color: white;
-                        background-color: rgb(
-                            121,
-                            120,
-                            120
-                        );
+                        background-color: rgb(121, 120, 120);
                     }
                 }
             }
         }
-        
+
         .listTime {
             padding: 0;
             .itemTime {
@@ -62,14 +58,19 @@
 
                     &.active {
                         color: white;
-                        background-color: rgb(
-                            121,
-                            120,
-                            120
-                        );
+                        background-color: rgb(121, 120, 120);
                     }
                 }
             }
+        }
+
+        .Btn {
+            margin-top: 10px;
+            color: white;
+            background-color: rgb(2, 48, 2);
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
         }
     }
 }

@@ -29,6 +29,9 @@ function Specialists() {
         else if (currentPath === "/specialists") {
             return "/specialists/services"
         }
+        else if (currentPath === "/dateAndTime/services/specialists") {
+            return "/dateAndTime/services/specialists/recording"
+        }
         else {
             return "/" // Возвращаем что-то по умолчанию, если необходимо
         }
