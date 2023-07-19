@@ -11,14 +11,16 @@ interface RootState {
     allServices: Service[],
     recordingDate: string, 
     recordingTime: string,
-    choosedService: string
+    choosedService: string, 
+    timeForServiceFact: number
 }
 
 const initialState: RootState = {
     allServices: [],
     recordingDate: "",
     recordingTime: "",
-    choosedService: ""
+    choosedService: "", 
+    timeForServiceFact: 0 
 }
 
 const dataOfBarbershopSlice = createSlice({
@@ -36,9 +38,12 @@ const dataOfBarbershopSlice = createSlice({
         },
         setChoosedService: (state, action: PayloadAction<string>) => {
             state.choosedService = action.payload
+        }, 
+        setTimeForServiceFact: (state, action: PayloadAction<number>) => {
+            state.timeForServiceFact = action.payload
         }
     },
 })
 
-export const { setAllServices, setRecordingDate, setRecordingTime, setChoosedService } = dataOfBarbershopSlice.actions
+export const { setAllServices, setRecordingDate, setRecordingTime, setChoosedService, setTimeForServiceFact } = dataOfBarbershopSlice.actions
 export default dataOfBarbershopSlice.reducer

@@ -5,7 +5,7 @@ import { Servicing } from "../../models/models";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store.index"
-import { setChoosedService } from "../../store/dataSlice";
+import { setChoosedService, setTimeForServiceFact } from "../../store/dataSlice";
 
 function Services() {
     const { data, error, isLoading } = useServicingQuery(null);
@@ -16,10 +16,35 @@ function Services() {
     //     (state: RootState) => state.dataOfBarbershop.choosedService
     // )
 
-    const handleChoosedServiceClick = (time: string, price: string) => {
-        // console.log(time)
+
+    const {
+        data: dataServing,
+        error: errorServicing,
+        isLoading: isLoadingServicing,
+    } = useServicingQuery(null)
+
+    console.log(dataServing)
+
+    const choosedService = useSelector(
+        (state: RootState) => state.dataOfBarbershop.choosedService
+    )
+
+
+    const handleChoosedServiceClick = (service: string, price: string) => {
+        console.log(service)
         // console.log(price)
-        dispatch(setChoosedService(time))
+        dispatch(setChoosedService(service))
+
+        // let timeForServiceFact: number = 0
+
+        // defining of accessed time for service
+        // 1.5 or 1 or 0.75 or 0.5  
+        dataServing?.map((item: any) => {
+            if (item.name === service) {
+                console.log(item.time)
+                dispatch(setTimeForServiceFact(item.time))
+            }
+        })
     }
 
     if (isLoading) {

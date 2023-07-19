@@ -17,6 +17,9 @@ function Specialists() {
     const recordingTime = useSelector(
         (state: RootState) => state.dataOfBarbershop.recordingTime
     )
+    const timeForServiceFact = useSelector((state: RootState) => state.dataOfBarbershop.timeForServiceFact)
+
+    console.log(timeForServiceFact)
 
     const {
         data: dataBarbers,
@@ -28,7 +31,7 @@ function Specialists() {
         error: errorServicing,
         isLoading: isLoadingServicing,
     } = useServicingQuery(null)
-    const location = useLocation() // Получаем текущий путь
+    const location = useLocation() // get current path
 
     // console.log(dataServing)
     // console.log(data)
@@ -39,120 +42,136 @@ function Specialists() {
 
     if (errorBarbers) {
         if ("status" in errorBarbers) {
-            // Обработка ошибки FetchBaseQueryError
+            // handler of error FetchBaseQueryError
             return <div>Error: {errorBarbers.status}</div>
         } else {
-            // Обработка ошибки SerializedError
+            // handler of error SerializedError
             return <div>Error: {errorBarbers.message}</div>
         }
     }
 
-    const getToPath = (currentPath: string): string => {
-        if (currentPath === "/services/specialists") {
-            return "/services/specialists/recording"
-        } else if (currentPath === "/specialists") {
-            return "/specialists/services"
-        } else if (currentPath === "/dateAndTime/services/specialists") {
-            return "/dateAndTime/services/specialists/recording"
-        } else {
-            return "/" // Возвращаем что-то по умолчанию, если необходимо
-        }
+    // const getToPath = (currentPath: string): string => {
+    //     if (currentPath === "/services/specialists") {
+    //         return "/services/specialists/recording"
+    //     } else if (currentPath === "/specialists") {
+    //         return "/specialists/services"
+    //     } else if (currentPath === "/dateAndTime/services/specialists") {
+    //         return "/dateAndTime/services/specialists/recording"
+    //     } else {
+    //         return "/" 
+    //     }
+    // }
+
+
+    // return (
+    //     <div className={styles.container}>
+    //         <div className={styles.modal}>
+    //             <ul className={styles.list}>
+    //                 {dataBarbers &&
+    //                     dataBarbers.map((el: Barbers) => (
+    //                         <li className={styles.item} key={el.id}>
+    //                             <div className={styles.content}>
+    //                                 <img src={el.image} alt="Barber" />
+    //                                 <div>
+    //                                     <h3>{el.status}</h3>
+    //                                     <h3>{el.name}</h3>
+    //                                     <div>
+    //                                         <ul>
+    //                                             {el.datesAndTime.map(
+    //                                                 (element: DatesAndTime, index: number) => (
+    //                                                     <li key={index}>
+    //                                                         <h3> {element.date} </h3>
+    //                                                         {/* {availableTimeAndDate(dataBarbers, dataServing, el.name)} */}
+
+    //                                                         {element.time.map((timeElement,index) => (
+    //                                                                 if(alement.access === timeForServiceFact) {
+    //                                                                     <Link key={ index } to={getToPath(location.pathname)} className={styles.link}>
+    //                                                                         <button key={ timeElement } className={styles.green}>{timeElement}</button>
+    //                                                                     </Link>
+    //                                                                 }
+    //                                                                 else {
+    //                                                                     <Link key={ index } to={getToPath(location.pathname)}>
+    //                                                                     <button key={ timeElement } className={styles.green}>{timeElement}</button>
+    //                                                                 </Link>
+    //                                                                 }
+    //                                                             )
+    //                                                         )}
+    //                                                     </li>
+    //                                                 )
+    //                                             )}
+    //                                         </ul>
+    //                                     </div>
+    //                                 </div>
+    //                             </div>
+    //                         </li>
+    //                     ))}
+    //             </ul>
+    //         </div>
+    //     </div>
+    // )
+
+
+    // ... (предыдущий код)
+
+const getToPath = (currentPath: string): string => {
+    if (currentPath === "/services/specialists") {
+        return "/services/specialists/recording";
+    } else if (currentPath === "/specialists") {
+        return "/specialists/services";
+    } else if (currentPath === "/dateAndTime/services/specialists") {
+        return "/dateAndTime/services/specialists/recording";
+    } else {
+        return "/";
     }
-    // -----------------------------------------------------------------
-    // this code need to perform in Services component 
-    // and need to change datesAndTime.booking
-    const availableTimeAndDate = (
-        dataBarbers: any,
-        dataServing: any
-    ) => {
-        let timeForServiceFact: number = 0
+};
 
-        dataServing.map((item: any) => {
-            if (item.name === choosedService) {
-                timeForServiceFact = item.time
-            }
-        })
-
-        // variable for index time
-        let indexOfAccess: number = 0
-
-        dataBarbers.map((item: any) => {
-            item.datesAndTime.map((el: any) => {
-                if (el.date === recordingDate) {
-                    el.access.map((element: any) => {
-                        if (element === timeForServiceFact) {
-                            indexOfAccess = el.access.indexOf(element)
-                        }
-                    })
-                }
-            })
-        })
-    }
-    // ------------------------------------------------------------------
-
-    return (
-        <div className={styles.container}>
-            <div className={styles.modal}>
-                <ul className={styles.list}>
-                    {dataBarbers &&
-                        dataBarbers.map((el: Barbers) => (
-                            <li className={styles.item} key={el.id}>
-                                <div className={styles.content}>
-                                    <img src={el.image} alt="Barber" />
+return (
+    <div className={styles.container}>
+        <div className={styles.modal}>
+            <ul className={styles.list}>
+                {dataBarbers &&
+                    dataBarbers.map((el: Barbers) => (
+                        <li className={styles.item} key={el.id}>
+                            <div className={styles.content}>
+                                <img src={el.image} alt="Barber" />
+                                <div>
+                                    <h3>{el.status}</h3>
+                                    <h3>{el.name}</h3>
                                     <div>
-                                        <h3>{el.status}</h3>
-                                        <h3>{el.name}</h3>
-                                        <div>
-                                            <ul>
-                                                {el.datesAndTime.map(
-                                                    (element: DatesAndTime) => (
-                                                        <li key={element.date}>
-                                                            <h3>
-                                                                {element.date}
-                                                            </h3>
-                                                            {/* {availableTimeAndDate(dataBarbers, dataServing, el.name)} */}
-
-                                                            {element.time.map(
-                                                                (
-                                                                    timeElement,
-                                                                    index
-                                                                ) => (
-                                                                    <Link
-                                                                        key={
-                                                                            index
-                                                                        }
-                                                                        to={getToPath(
-                                                                            location.pathname
-                                                                        )}
-                                                                        className={
-                                                                            styles.link
-                                                                        }
-                                                                    >
-                                                                        <button
-                                                                            key={
-                                                                                timeElement
-                                                                            }
-                                                                        >
-                                                                            {
-                                                                                timeElement
-                                                                            }
-                                                                        </button>
-                                                                    </Link>
-                                                                )
-                                                            )}
-                                                        </li>
-                                                    )
-                                                )}
-                                            </ul>
-                                        </div>
+                                        <ul>
+                                            {el.datesAndTime.map((element: DatesAndTime, index: number) => (
+                                                <li key={index}>
+                                                    <h3> {element.date} </h3>
+                                                    {element.time.map((timeElement, index) => {
+                                                        const isAvailable = element.access[(element.time).indexOf(timeElement)] >= timeForServiceFact ;
+                                                        return (
+                                                            <Link
+                                                                key={index}
+                                                                to={getToPath(location.pathname)}
+                                                                className={styles.link}
+                                                            >
+                                                                <button
+                                                                    key={timeElement}
+                                                                    className={isAvailable ? styles.green : ""}
+                                                                >
+                                                                    {timeElement}
+                                                                </button>
+                                                            </Link>
+                                                        );
+                                                    })}
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
                                 </div>
-                            </li>
-                        ))}
-                </ul>
-            </div>
+                            </div>
+                        </li>
+                    ))}
+            </ul>
         </div>
-    )
+    </div>
+);
+
 }
 
 export default Specialists
