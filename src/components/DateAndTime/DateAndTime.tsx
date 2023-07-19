@@ -22,13 +22,13 @@ function DateAndTime() {
         dispatch(setRecordingDate(date))
     }
 
-    useEffect(() => {
-        console.log("Updated recordingDate:", recordingDate)
-    }, [recordingDate])
+    // useEffect(() => {
+    //     console.log("Updated recordingDate:", recordingDate)
+    // }, [recordingDate])
 
-    useEffect(() => {
-        console.log("Updated recordingTime:", recordingTime)
-    }, [recordingTime])
+    // useEffect(() => {
+    //     console.log("Updated recordingTime:", recordingTime)
+    // }, [recordingTime])
 
     const shouldRedirect = recordingDate !== "" && recordingTime !== ""
 

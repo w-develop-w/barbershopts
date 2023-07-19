@@ -17,8 +17,8 @@ function Services() {
     // )
 
     const handleChoosedServiceClick = (time: string, price: string) => {
-        console.log(time)
-        console.log(price)
+        // console.log(time)
+        // console.log(price)
         dispatch(setChoosedService(time))
     }
 
@@ -39,7 +39,7 @@ function Services() {
     // Функция для определения правильного пути в зависимости от текущего пути
     const getToPath = (currentPath: string): string => {
 
-        console.log(currentPath)
+        // console.log(currentPath)
         if (currentPath === "/specialists/services") {
             return "/specialists/services/recording";
         } 

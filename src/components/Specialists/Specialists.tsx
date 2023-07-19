@@ -10,6 +10,8 @@ import { useSelector } from "react-redux"
 function Specialists() {
 
     const choosedService = useSelector((state: RootState) => state.dataOfBarbershop.choosedService)
+    const recordingDate = useSelector((state: RootState) => state.dataOfBarbershop.recordingDate)
+    const recordingTime = useSelector((state: RootState) => state.dataOfBarbershop.recordingTime)
 
     const { data: dataBarbers, error: errorBarbers, isLoading: isLoadingBarbers } = useSpecialistsQuery(null)
     const { data: dataServing, error: errorServicing, isLoading: isLoadingServicing } = useServicingQuery(null)
@@ -49,7 +51,7 @@ function Specialists() {
 
 
 
-    const availableTimeAndDate = (dataBarbers: any, dataServing: any) => {
+    const availableTimeAndDate = (dataBarbers: any, dataServing: any, nameBarber: string) => {
         
         // dataBarbers.map((item: any)  => {
         //     // console.log(item)
@@ -57,19 +59,52 @@ function Specialists() {
 
         //     }
         // })
-        
-        let timeForService: number = 0
 
+        // console.log(nameBarber)
+        
+        // variable with time for service in db servicing
+        let timeForServiceFact: number = 0
+        
         dataServing.map((item: any) => {
             if(item.name ===  choosedService) {
-                timeForService = item.time
+                timeForServiceFact = item.time
             }            
+        })
+        
+        
+        // variable for index time 
+        let indexOfTime: number  = 0
+        // variable with time for service in db barbers
+        let timeForServiceBarber: number = 0
+
+        dataBarbers.map((item: any) => {
+
+            if(item.name === nameBarber) {
+                item.datesAndTime.map((el:any) => {
+
+                    if(el.date === recordingDate) {
+                        // console.log(el.time)
+                        el.time.map((element: any) => {
+                            // console.log(`${recordingTime}`)
+                            if(element === recordingTime) {
+                                indexOfTime = (el.time).indexOf(recordingTime)
+                                // console.log(`indedxofTime ${indexOfTime}`)
+                                timeForServiceBarber= el.access[indexOfTime]
+                                console.log(timeForServiceBarber)
+
+                            }
+                            else {
+                                console.log('hehehhe')
+                            }
+                        })
+                    }
+                })
+            }
         })
 
 
     } 
 
-    // availableTimeAndDate(dataBarbers)
 
     return (
         <div className={styles.container}>
@@ -111,6 +146,7 @@ function Specialists() {
                                                                             key={
                                                                                 timeElement
                                                                             }
+                                                                            onClick={() => availableTimeAndDate(dataBarbers, dataServing, el.name)}
                                                                         >
                                                                             {
                                                                                 timeElement
