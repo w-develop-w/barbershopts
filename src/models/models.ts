@@ -8,6 +8,7 @@ export interface Barbers {
     image: string
     name: string
     status: string
+    workDay: boolean
     datesAndTime: DatesAndTime[]
     price: string
 }

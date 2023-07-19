@@ -8,30 +8,20 @@ import styles from "./Specialists.module.scss"
 import { useSelector } from "react-redux"
 
 function Specialists() {
-    const choosedService = useSelector(
-        (state: RootState) => state.dataOfBarbershop.choosedService
-    )
-    const recordingDate = useSelector(
-        (state: RootState) => state.dataOfBarbershop.recordingDate
-    )
-    const recordingTime = useSelector(
-        (state: RootState) => state.dataOfBarbershop.recordingTime
-    )
+  
     const timeForServiceFact = useSelector((state: RootState) => state.dataOfBarbershop.timeForServiceFact)
+    const recordingDate = useSelector((state: RootState) => state.dataOfBarbershop.recordingDate)
 
-    console.log(timeForServiceFact)
+    // console.log(timeForServiceFact)
 
     const {
         data: dataBarbers,
         error: errorBarbers,
         isLoading: isLoadingBarbers,
     } = useSpecialistsQuery(null)
-    const {
-        data: dataServing,
-        error: errorServicing,
-        isLoading: isLoadingServicing,
-    } = useServicingQuery(null)
-    const location = useLocation() // get current path
+
+    // get current path
+    const location = useLocation() 
 
     // console.log(dataServing)
     // console.log(data)
@@ -69,6 +59,7 @@ function Specialists() {
             <ul className={styles.list}>
             {dataBarbers &&
                 dataBarbers.map((el: Barbers) => (
+                el.workDay === true && (
                 <li className={styles.item} key={el.id}>
                     <div className={styles.content}>
                     <img src={el.image} alt="Barber" />
@@ -78,36 +69,37 @@ function Specialists() {
                         <div>
                         <ul>
                             {el.datesAndTime.map((element: DatesAndTime, index: number) => (
-                            <li key={index}>
-                                <h3> {element.date} </h3>
-                                {element.time.map((timeElement, index) => {
-                                const isAvailable = element.access[index] >= timeForServiceFact;
-                                const isBooking = element.booking[index];
-                                const isDisabled = !isAvailable || !isBooking; 
-    
-                                return (
-                                    <Link
-                                    key={index}
-                                    to={getToPath(location.pathname)}
-                                    className={styles.link}
-                                    >
-                                    <button
-                                        key={timeElement}
-                                        className={`${isAvailable && isBooking ? styles.green : ""}`}
-                                        disabled={isDisabled}
-                                    >
-                                        {timeElement}
-                                    </button>
-                                    </Link>
-                                );
-                                })}
-                            </li>
+                                 element.date === recordingDate && (
+                                <li key={index}>
+                                    <h3> {element.date} </h3>
+                                    {element.time.map((timeElement, index) => {
+                                    const isAvailable = element.access[index] >= timeForServiceFact;
+                                    const isBooking = element.booking[index];
+                                    const isDisabled = !isAvailable || !isBooking; 
+        
+                                    return (
+                                        <Link
+                                        key={index}
+                                        to={getToPath(location.pathname)}
+                                        className={styles.link}
+                                        >
+                                        <button
+                                            key={timeElement}
+                                            className={`${isAvailable && isBooking ? styles.green : ""}`}
+                                            disabled={isDisabled}
+                                        >
+                                            {timeElement}
+                                        </button>
+                                        </Link>
+                                    );
+                                    })}
+                                </li> )
                             ))}
                         </ul>
                         </div>
                     </div>
                     </div>
-                </li>
+                </li> )
                 ))}
             </ul>
         </div>

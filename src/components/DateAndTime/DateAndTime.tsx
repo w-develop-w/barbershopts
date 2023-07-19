@@ -38,6 +38,7 @@ function DateAndTime() {
                 <h3>Choose date:</h3>
                 <div className={styles.listDate}>
                     <div className={styles.itemDate}>
+
                         <button
                             className={
                                 recordingDate === "14.07" ? styles.active : ""
@@ -46,12 +47,49 @@ function DateAndTime() {
                         >
                             14.07
                         </button>
+
+                        <button
+                            className={
+                                recordingDate === "15.07" ? styles.active : ""
+                            }
+                            onClick={() => handleDateClick("15.07")}
+                        >
+                            15.07
+                        </button>
+
+                        <button
+                            className={
+                                recordingDate === "16.07" ? styles.active : ""
+                            }
+                            onClick={() => handleDateClick("16.07")}
+                        >
+                            16.07
+                        </button>
                     </div>
                 </div>
 
                 <h3>Choose time:</h3>
                 <div className={styles.listTime}>
                     <div className={styles.itemTime}>
+                        
+                        <button
+                            className={
+                                recordingTime === "10:00" ? styles.active : ""
+                            }
+                            onClick={() => handleTimeClick("10:00")}
+                        >
+                            10:00
+                        </button>
+                        
+                        <button
+                            className={
+                                recordingTime === "11:00" ? styles.active : ""
+                            }
+                            onClick={() => handleTimeClick("11:00")}
+                        >
+                            11:00
+                        </button>
+                        
                         <button
                             className={
                                 recordingTime === "12:00" ? styles.active : ""
@@ -59,6 +97,24 @@ function DateAndTime() {
                             onClick={() => handleTimeClick("12:00")}
                         >
                             12:00
+                        </button>
+                        
+                        <button
+                            className={
+                                recordingTime === "13:00" ? styles.active : ""
+                            }
+                            onClick={() => handleTimeClick("13:00")}
+                        >
+                            13:00
+                        </button>
+                        
+                        <button
+                            className={
+                                recordingTime === "14:00" ? styles.active : ""
+                            }
+                            onClick={() => handleTimeClick("14:00")}
+                        >
+                            14:00
                         </button>
                     </div>
                 </div>
