@@ -23,6 +23,6 @@ export interface DatesAndTime {
 export interface Servicing {
     id: number
     name: string
-    price: string
+    price: number
     time: number
 }

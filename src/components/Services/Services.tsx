@@ -30,7 +30,7 @@ function Services() {
     )
 
 
-    const handleChoosedServiceClick = (service: string, price: string) => {
+    const handleChoosedServiceClick = (service: string, price: number) => {
         console.log(service)
         // console.log(price)
         dispatch(setChoosedService(service))
@@ -93,7 +93,7 @@ function Services() {
                             >
                                 <li className={styles.item} onClick={() => handleChoosedServiceClick(el.name, el.price)}>
                                     <h3>{el.name}</h3>
-                                    <h2>{el.price}</h2>
+                                    <h2>{el.price}$</h2>
                                 </li>
                             </Link>
                         ))}

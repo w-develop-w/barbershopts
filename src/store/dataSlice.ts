@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 interface Service {
     id: number
     name: string
-    price: string
+    price: number
     time: number
 }
 
@@ -15,7 +15,8 @@ interface RootState {
     recordingDate: string, 
     recordingTime: string,
     choosedService: string,
-    priceChoosedService: string, 
+    priceChoosedService: number, 
+    percentsOnPrice: string,
     timeForServiceFact: number
 }
 
@@ -27,7 +28,8 @@ const initialState: RootState = {
     recordingDate: "",
     recordingTime: "",
     choosedService: "", 
-    priceChoosedService: "",
+    priceChoosedService: 0,
+    percentsOnPrice: "",
     timeForServiceFact: 0 
 }
 
@@ -56,8 +58,11 @@ const dataOfBarbershopSlice = createSlice({
         setChoosedService: (state, action: PayloadAction<string>) => {
             state.choosedService = action.payload
         }, 
-        setPriceChoosedService: (state, action: PayloadAction<string>) => {
+        setPriceChoosedService: (state, action: PayloadAction<number>) => {
             state.priceChoosedService = action.payload
+        }, 
+        setPercentsOnPrice: (state, action: PayloadAction<string>) => {
+            state.percentsOnPrice = action.payload
         }, 
         setTimeForServiceFact: (state, action: PayloadAction<number>) => {
             state.timeForServiceFact = action.payload
@@ -65,5 +70,5 @@ const dataOfBarbershopSlice = createSlice({
     },
 })
 
-export const { setAllServices, setChoosedImageBarber, setChoosedStatusBarber,  setChoosedNameBarber, setRecordingDate, setRecordingTime, setChoosedService, setPriceChoosedService, setTimeForServiceFact } = dataOfBarbershopSlice.actions
+export const { setAllServices, setChoosedImageBarber, setChoosedStatusBarber,  setChoosedNameBarber, setRecordingDate, setRecordingTime, setChoosedService, setPriceChoosedService, setTimeForServiceFact, setPercentsOnPrice } = dataOfBarbershopSlice.actions
 export default dataOfBarbershopSlice.reducer

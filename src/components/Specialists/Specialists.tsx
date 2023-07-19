@@ -6,7 +6,7 @@ import { Barbers, DatesAndTime } from "../../models/models"
 import { RootState } from "../../store/store.index"
 import styles from "./Specialists.module.scss"
 import { useDispatch, useSelector } from "react-redux"
-import { setChoosedImageBarber, setChoosedStatusBarber, setRecordingTime, setChoosedNameBarber } from "../../store/dataSlice";
+import { setChoosedImageBarber, setChoosedStatusBarber, setRecordingTime, setChoosedNameBarber, setPercentsOnPrice } from "../../store/dataSlice";
 
 
 function Specialists() {
@@ -55,13 +55,12 @@ function Specialists() {
         }
     };
 
-    const clickOnTime = (image: string, status: string, name:string, time: string ) => {
+    const clickOnTime = (image: string, status: string, name:string, time: string, price: string ) => {
         dispatch(setChoosedImageBarber(image))
         dispatch(setChoosedStatusBarber(status))
         dispatch(setChoosedNameBarber(name))
         dispatch(setRecordingTime(time))
-
-
+        dispatch(setPercentsOnPrice(price))
     }
 
 
@@ -99,7 +98,7 @@ function Specialists() {
                                             key={timeElement}
                                             className={`${isAvailable && isBooking ? styles.green : ""}`}
                                             disabled={isDisabled}
-                                            onClick={() => clickOnTime(el.image, el.status, el.name, timeElement)}
+                                            onClick={() => clickOnTime(el.image, el.status, el.name, timeElement, el.price)}
                                         >
                                             {timeElement}
                                         </button>
