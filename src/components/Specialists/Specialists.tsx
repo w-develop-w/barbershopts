@@ -5,10 +5,13 @@ import { useServicingQuery } from "../../api/fetchDataServices"
 import { Barbers, DatesAndTime } from "../../models/models"
 import { RootState } from "../../store/store.index"
 import styles from "./Specialists.module.scss"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { setChoosedImageBarber, setChoosedStatusBarber, setRecordingTime, setChoosedNameBarber } from "../../store/dataSlice";
+
 
 function Specialists() {
-  
+
+    const dispatch = useDispatch()
     const timeForServiceFact = useSelector((state: RootState) => state.dataOfBarbershop.timeForServiceFact)
     const recordingDate = useSelector((state: RootState) => state.dataOfBarbershop.recordingDate)
 
@@ -22,10 +25,10 @@ function Specialists() {
 
     // get current path
     const location = useLocation() 
-
+    
     // console.log(dataServing)
     // console.log(data)
-
+    
     if (isLoadingBarbers) {
         return <div>Loading...</div>
     }
@@ -51,6 +54,15 @@ function Specialists() {
             return "/";
         }
     };
+
+    const clickOnTime = (image: string, status: string, name:string, time: string ) => {
+        dispatch(setChoosedImageBarber(image))
+        dispatch(setChoosedStatusBarber(status))
+        dispatch(setChoosedNameBarber(name))
+        dispatch(setRecordingTime(time))
+
+
+    }
 
 
     return (
@@ -87,6 +99,7 @@ function Specialists() {
                                             key={timeElement}
                                             className={`${isAvailable && isBooking ? styles.green : ""}`}
                                             disabled={isDisabled}
+                                            onClick={() => clickOnTime(el.image, el.status, el.name, timeElement)}
                                         >
                                             {timeElement}
                                         </button>

@@ -5,7 +5,7 @@ import { Servicing } from "../../models/models";
 import { Link, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store.index"
-import { setChoosedService, setTimeForServiceFact } from "../../store/dataSlice";
+import { setChoosedService, setPriceChoosedService, setTimeForServiceFact } from "../../store/dataSlice";
 
 function Services() {
     const { data, error, isLoading } = useServicingQuery(null);
@@ -34,6 +34,7 @@ function Services() {
         console.log(service)
         // console.log(price)
         dispatch(setChoosedService(service))
+        dispatch(setPriceChoosedService(price))
 
         // let timeForServiceFact: number = 0
 

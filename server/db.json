@@ -58,37 +58,37 @@
     "servicing": [
         {
             "id": 1,
-            "name": "men's haircut",
+            "name": "Men's haircut",
             "price": "13$",
             "time": 1
         },
         {
             "id": 2,
-            "name": "haircut under the nozzle",
+            "name": "Haircut under the nozzle",
             "price": "10$",
             "time": 0.75
         },
         {
             "id": 3,
-            "name": "beard trim",
+            "name": "Beard trim",
             "price": "10$",
             "time": 1
         },
         {
             "id": 4,
-            "name": "men's haircut + beard",
+            "name": "Men's haircut + beard",
             "price": "20$",
             "time": 1.5
         },
         {
             "id": 5,
-            "name": "haircut under the nozzle + beard",
+            "name": "Haircut under the nozzle + beard",
             "price": "20$",
             "time": 1.5
         },
         {
             "id": 6,
-            "name": "children's haircut",
+            "name": "Children's haircut",
             "price": "12$",
             "time": 0.75
         }
