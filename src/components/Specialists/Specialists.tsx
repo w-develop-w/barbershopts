@@ -50,128 +50,70 @@ function Specialists() {
         }
     }
 
-    // const getToPath = (currentPath: string): string => {
-    //     if (currentPath === "/services/specialists") {
-    //         return "/services/specialists/recording"
-    //     } else if (currentPath === "/specialists") {
-    //         return "/specialists/services"
-    //     } else if (currentPath === "/dateAndTime/services/specialists") {
-    //         return "/dateAndTime/services/specialists/recording"
-    //     } else {
-    //         return "/" 
-    //     }
-    // }
+    const getToPath = (currentPath: string): string => {
+        if (currentPath === "/services/specialists") {
+            return "/services/specialists/recording";
+        } else if (currentPath === "/specialists") {
+            return "/specialists/services";
+        } else if (currentPath === "/dateAndTime/services/specialists") {
+            return "/dateAndTime/services/specialists/recording";
+        } else {
+            return "/";
+        }
+    };
 
 
-    // return (
-    //     <div className={styles.container}>
-    //         <div className={styles.modal}>
-    //             <ul className={styles.list}>
-    //                 {dataBarbers &&
-    //                     dataBarbers.map((el: Barbers) => (
-    //                         <li className={styles.item} key={el.id}>
-    //                             <div className={styles.content}>
-    //                                 <img src={el.image} alt="Barber" />
-    //                                 <div>
-    //                                     <h3>{el.status}</h3>
-    //                                     <h3>{el.name}</h3>
-    //                                     <div>
-    //                                         <ul>
-    //                                             {el.datesAndTime.map(
-    //                                                 (element: DatesAndTime, index: number) => (
-    //                                                     <li key={index}>
-    //                                                         <h3> {element.date} </h3>
-    //                                                         {/* {availableTimeAndDate(dataBarbers, dataServing, el.name)} */}
-
-    //                                                         {element.time.map((timeElement,index) => (
-    //                                                                 if(alement.access === timeForServiceFact) {
-    //                                                                     <Link key={ index } to={getToPath(location.pathname)} className={styles.link}>
-    //                                                                         <button key={ timeElement } className={styles.green}>{timeElement}</button>
-    //                                                                     </Link>
-    //                                                                 }
-    //                                                                 else {
-    //                                                                     <Link key={ index } to={getToPath(location.pathname)}>
-    //                                                                     <button key={ timeElement } className={styles.green}>{timeElement}</button>
-    //                                                                 </Link>
-    //                                                                 }
-    //                                                             )
-    //                                                         )}
-    //                                                     </li>
-    //                                                 )
-    //                                             )}
-    //                                         </ul>
-    //                                     </div>
-    //                                 </div>
-    //                             </div>
-    //                         </li>
-    //                     ))}
-    //             </ul>
-    //         </div>
-    //     </div>
-    // )
-
-
-    // ... (предыдущий код)
-
-const getToPath = (currentPath: string): string => {
-    if (currentPath === "/services/specialists") {
-        return "/services/specialists/recording";
-    } else if (currentPath === "/specialists") {
-        return "/specialists/services";
-    } else if (currentPath === "/dateAndTime/services/specialists") {
-        return "/dateAndTime/services/specialists/recording";
-    } else {
-        return "/";
-    }
-};
-
-return (
-    <div className={styles.container}>
+    return (
+        <div className={styles.container}>
         <div className={styles.modal}>
             <ul className={styles.list}>
-                {dataBarbers &&
-                    dataBarbers.map((el: Barbers) => (
-                        <li className={styles.item} key={el.id}>
-                            <div className={styles.content}>
-                                <img src={el.image} alt="Barber" />
-                                <div>
-                                    <h3>{el.status}</h3>
-                                    <h3>{el.name}</h3>
-                                    <div>
-                                        <ul>
-                                            {el.datesAndTime.map((element: DatesAndTime, index: number) => (
-                                                <li key={index}>
-                                                    <h3> {element.date} </h3>
-                                                    {element.time.map((timeElement, index) => {
-                                                        const isAvailable = element.access[(element.time).indexOf(timeElement)] >= timeForServiceFact ;
-                                                        return (
-                                                            <Link
-                                                                key={index}
-                                                                to={getToPath(location.pathname)}
-                                                                className={styles.link}
-                                                            >
-                                                                <button
-                                                                    key={timeElement}
-                                                                    className={isAvailable ? styles.green : ""}
-                                                                >
-                                                                    {timeElement}
-                                                                </button>
-                                                            </Link>
-                                                        );
-                                                    })}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </li>
-                    ))}
+            {dataBarbers &&
+                dataBarbers.map((el: Barbers) => (
+                <li className={styles.item} key={el.id}>
+                    <div className={styles.content}>
+                    <img src={el.image} alt="Barber" />
+                    <div>
+                        <h3>{el.status}</h3>
+                        <h3>{el.name}</h3>
+                        <div>
+                        <ul>
+                            {el.datesAndTime.map((element: DatesAndTime, index: number) => (
+                            <li key={index}>
+                                <h3> {element.date} </h3>
+                                {element.time.map((timeElement, index) => {
+                                const isAvailable = element.access[index] >= timeForServiceFact;
+                                const isBooking = element.booking[index];
+                                const isDisabled = !isAvailable || !isBooking; 
+    
+                                return (
+                                    <Link
+                                    key={index}
+                                    to={getToPath(location.pathname)}
+                                    className={styles.link}
+                                    >
+                                    <button
+                                        key={timeElement}
+                                        className={`${isAvailable && isBooking ? styles.green : ""}`}
+                                        disabled={isDisabled}
+                                    >
+                                        {timeElement}
+                                    </button>
+                                    </Link>
+                                );
+                                })}
+                            </li>
+                            ))}
+                        </ul>
+                        </div>
+                    </div>
+                    </div>
+                </li>
+                ))}
             </ul>
         </div>
-    </div>
-);
-
+        </div>
+    );
+  
 }
 
 export default Specialists

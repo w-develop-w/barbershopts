@@ -73,7 +73,14 @@
                                             transition: 0.3s;
     
                                             &.green {
-                                                background-color: rgb(27, 201, 27);
+                                                color: white;
+                                                background-color: rgb(2, 48, 2);
+
+                                                &:hover {
+                                                    color: white;
+                                                    cursor: pointer;
+                                                    background-color: rgb(4, 80, 4);
+                                                }
                                             }
 
                                             &:hover {
@@ -85,6 +92,17 @@
                                                     120
                                                 );
                                             }
+                                        }
+
+                                        button[disabled] {
+                                            /* Ваши стили для заблокированных кнопок здесь */
+                                            
+                                            /* Пример: */
+                                            background-color: grey;
+                                            color: white;
+                                            // /* Убираем hover-эффект */
+                                            pointer-events: none; /* Запрещаем события мыши (нажатие, наведение и т.д.) */
+                                            cursor: not-allowed; /* Курсор не-доступен */
                                         }
                                     }
                                 }

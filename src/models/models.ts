@@ -15,6 +15,7 @@ export interface Barbers {
 export interface DatesAndTime {
     date: string
     time: string[]
+    booking: boolean[]
     access: number[]
 }
 
