@@ -8,13 +8,26 @@ import styles from "./Specialists.module.scss"
 import { useSelector } from "react-redux"
 
 function Specialists() {
+    const choosedService = useSelector(
+        (state: RootState) => state.dataOfBarbershop.choosedService
+    )
+    const recordingDate = useSelector(
+        (state: RootState) => state.dataOfBarbershop.recordingDate
+    )
+    const recordingTime = useSelector(
+        (state: RootState) => state.dataOfBarbershop.recordingTime
+    )
 
-    const choosedService = useSelector((state: RootState) => state.dataOfBarbershop.choosedService)
-    const recordingDate = useSelector((state: RootState) => state.dataOfBarbershop.recordingDate)
-    const recordingTime = useSelector((state: RootState) => state.dataOfBarbershop.recordingTime)
-
-    const { data: dataBarbers, error: errorBarbers, isLoading: isLoadingBarbers } = useSpecialistsQuery(null)
-    const { data: dataServing, error: errorServicing, isLoading: isLoadingServicing } = useServicingQuery(null)
+    const {
+        data: dataBarbers,
+        error: errorBarbers,
+        isLoading: isLoadingBarbers,
+    } = useSpecialistsQuery(null)
+    const {
+        data: dataServing,
+        error: errorServicing,
+        isLoading: isLoadingServicing,
+    } = useServicingQuery(null)
     const location = useLocation() // Получаем текущий путь
 
     // console.log(dataServing)
@@ -37,74 +50,45 @@ function Specialists() {
     const getToPath = (currentPath: string): string => {
         if (currentPath === "/services/specialists") {
             return "/services/specialists/recording"
-        }
-        else if (currentPath === "/specialists") {
+        } else if (currentPath === "/specialists") {
             return "/specialists/services"
-        }
-        else if (currentPath === "/dateAndTime/services/specialists") {
+        } else if (currentPath === "/dateAndTime/services/specialists") {
             return "/dateAndTime/services/specialists/recording"
-        }
-        else {
+        } else {
             return "/" // Возвращаем что-то по умолчанию, если необходимо
         }
     }
-
-
-
-    const availableTimeAndDate = (dataBarbers: any, dataServing: any, nameBarber: string) => {
-        
-        // dataBarbers.map((item: any)  => {
-        //     // console.log(item)
-        //     if(item) {
-
-        //     }
-        // })
-
-        // console.log(nameBarber)
-        
-        // variable with time for service in db servicing
+    // -----------------------------------------------------------------
+    // this code need to perform in Services component 
+    // and need to change datesAndTime.booking
+    const availableTimeAndDate = (
+        dataBarbers: any,
+        dataServing: any
+    ) => {
         let timeForServiceFact: number = 0
-        
+
         dataServing.map((item: any) => {
-            if(item.name ===  choosedService) {
+            if (item.name === choosedService) {
                 timeForServiceFact = item.time
-            }            
-        })
-        
-        
-        // variable for index time 
-        let indexOfTime: number  = 0
-        // variable with time for service in db barbers
-        let timeForServiceBarber: number = 0
-
-        dataBarbers.map((item: any) => {
-
-            if(item.name === nameBarber) {
-                item.datesAndTime.map((el:any) => {
-
-                    if(el.date === recordingDate) {
-                        // console.log(el.time)
-                        el.time.map((element: any) => {
-                            // console.log(`${recordingTime}`)
-                            if(element === recordingTime) {
-                                indexOfTime = (el.time).indexOf(recordingTime)
-                                // console.log(`indedxofTime ${indexOfTime}`)
-                                timeForServiceBarber= el.access[indexOfTime]
-                                console.log(timeForServiceBarber)
-
-                            }
-                            else {
-                                console.log('hehehhe')
-                            }
-                        })
-                    }
-                })
             }
         })
 
+        // variable for index time
+        let indexOfAccess: number = 0
 
-    } 
-
+        dataBarbers.map((item: any) => {
+            item.datesAndTime.map((el: any) => {
+                if (el.date === recordingDate) {
+                    el.access.map((element: any) => {
+                        if (element === timeForServiceFact) {
+                            indexOfAccess = el.access.indexOf(element)
+                        }
+                    })
+                }
+            })
+        })
+    }
+    // ------------------------------------------------------------------
 
     return (
         <div className={styles.container}>
@@ -126,6 +110,8 @@ function Specialists() {
                                                             <h3>
                                                                 {element.date}
                                                             </h3>
+                                                            {/* {availableTimeAndDate(dataBarbers, dataServing, el.name)} */}
+
                                                             {element.time.map(
                                                                 (
                                                                     timeElement,
@@ -146,7 +132,6 @@ function Specialists() {
                                                                             key={
                                                                                 timeElement
                                                                             }
-                                                                            onClick={() => availableTimeAndDate(dataBarbers, dataServing, el.name)}
                                                                         >
                                                                             {
                                                                                 timeElement
