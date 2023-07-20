@@ -1,71 +1,50 @@
 import React, { useEffect } from "react";
-import styles from "./Recording.module.scss"
-import { RootState } from "../../store/store.index"
+import styles from "./Recording.module.scss";
+import { RootState } from "../../store/store.index";
 import { useSelector } from "react-redux";
 import { useSpecialistsQuery } from "../../api/fetchDataSpecialists";
 import { Barbers, DatesAndTime } from "../../models/models";
 import DateAndTime from "../DateAndTime/DateAndTime";
 import { useUpdateSpecialistMutation } from "../../api/putDataSpecialists";
 
-
 function Recording() {
+    const dataOfBarbershop = useSelector((state: RootState) => state.dataOfBarbershop);
+    const { choosedNameBarber, recordingDate, recordingTime } = dataOfBarbershop;
+    const { choosedImageBarber, choosedStatusBarber, choosedService, priceChoosedService, percentsOnPrice } = dataOfBarbershop;
 
     const [updateSpecialist, { isLoading, error }] = useUpdateSpecialistMutation();
 
-    const choosedImageBarber = useSelector((state: RootState) => state.dataOfBarbershop.choosedImageBarber)
-    const choosedStatusBarber = useSelector((state: RootState) => state.dataOfBarbershop.choosedStatusBarber)
-    const choosedNameBarber = useSelector((state: RootState) => state.dataOfBarbershop.choosedNameBarber)
-    const choosedService = useSelector((state: RootState) => state.dataOfBarbershop.choosedService)
-    const recordingDate = useSelector((state: RootState) => state.dataOfBarbershop.recordingDate)
-    const recordingTime = useSelector((state: RootState) => state.dataOfBarbershop.recordingTime)
-    const priceChoosedService = useSelector((state: RootState) => state.dataOfBarbershop.priceChoosedService)
-    const percentsOnPrice = useSelector((state: RootState) => state.dataOfBarbershop.percentsOnPrice)
-
-    const {
-        data: dataBarbers,
-        error: errorBarbers,
-        isLoading: isLoadingBarbers,
-    } = useSpecialistsQuery(null)
+    const { data: dataBarbers, error: errorBarbers, isLoading: isLoadingBarbers } = useSpecialistsQuery(null);
 
     useEffect(() => {
-        
-        // Проверяем, что данные о парикмахерах получены с сервера
         if (dataBarbers) {
-            // Функция для обновления данных о парикмахерах
             const updateDataBaseBarbers = (dataBarbers: Barbers[]) => {
                 dataBarbers.forEach((el: Barbers) => {
                     if (el.name === choosedNameBarber) {
-                        let deepCopyObject = JSON.parse(JSON.stringify(el));
-                        // console.log(deepCopyObject)
-                        deepCopyObject.datesAndTime.map((element: DatesAndTime) => {
+                        const deepCopyObject: Barbers = JSON.parse(JSON.stringify(el));
+                        const { datesAndTime } = deepCopyObject;
+                        datesAndTime.forEach((element: DatesAndTime) => {
                             if (element.date === recordingDate) {
-                                // console.log()
-                                // element.booking[indexChoosedTime] = false
-                                // console.log(el)
-                                element.booking[(element.time).indexOf(recordingTime)] = false
-                                updateSpecialist(deepCopyObject)
-                                // console.log(deepCopyObject)
+                                element.booking[element.time.indexOf(recordingTime)] = false;
+                                updateSpecialist(deepCopyObject);
                             }
-                        })
+                        });
                     }
-                })
-            }
-            // Вызываем функцию для обновления данных
-            updateDataBaseBarbers(dataBarbers)
+                });
+            };
+            updateDataBaseBarbers(dataBarbers);
         }
-    }, [dataBarbers, choosedNameBarber, recordingDate])
+    }, [dataBarbers, choosedNameBarber, recordingDate, recordingTime, updateSpecialist]);
 
     const calculatePrice = () => {
         if (percentsOnPrice === "-20%") {
-            return Math.ceil(priceChoosedService - ((priceChoosedService / 100) * 20));
+            return Math.ceil(priceChoosedService - (priceChoosedService * 0.2));
         } else if (percentsOnPrice === "-10%") {
-            return Math.ceil(priceChoosedService - ((priceChoosedService / 100) * 10));
+            return Math.ceil(priceChoosedService - (priceChoosedService * 0.1));
         } else {
             return priceChoosedService;
         }
     };
-
-    // console.log(percentsOnPrice);
 
     return (
         <div className={styles.container}>
@@ -96,8 +75,10 @@ function Recording() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
 export default Recording;
+
+
 
