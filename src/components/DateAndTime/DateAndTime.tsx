@@ -383,6 +383,9 @@ function DateAndTime() {
   const choosedNameBarber = useSelector(
     (state: RootState) => state.dataOfBarbershop.choosedNameBarber
   );
+  const timeForServiceFact = useSelector(
+    (state: RootState) => state.dataOfBarbershop.timeForServiceFact
+  );
 
   const handleTimeClick = (time: string) => {
     dispatch(setRecordingTime(time));
@@ -434,22 +437,61 @@ function DateAndTime() {
                         ))}
                       </div>
                     </div>
-                    <h3>Choose time:</h3>
+                    {/* <h3>Choose time:</h3> */}
+
+           
+
                     <div className={styles.listTime}>
-                      <div className={styles.itemTime}>
-                        {item.datesAndTime.map((el) =>
-                          el.time.map((element) => (
-                            <button
-                              key={element}
-                              className={recordingTime === element ? styles.active : ""}
-                              onClick={() => handleTimeClick(element)}
-                            >
-                              {element}
-                            </button>
-                          ))
-                        )}
-                      </div>
+                        <div className={styles.itemTime}>
+                            {item.datesAndTime
+                            .filter((el) => el.date === recordingDate)
+                            .map((el) => {
+                                // Создаем новый массив с доступными элементами времени
+                                const availableTimes = el.time.filter(
+                                (element, index) => el.access[index] >= timeForServiceFact && el.booking[index] === true
+                                );
+
+                                // Проверяем, есть ли доступные элементы времени, и отображаем кнопки
+                                if (availableTimes.length > 0) {
+                                return (
+                                    <div key={el.date}>
+                                    <h3>Choose time:</h3>
+                                    {availableTimes.map((time, index) => (
+                                        <button
+                                        key={index}
+                                        className={recordingTime === time ? styles.active : ""}
+                                        onClick={() => handleTimeClick(time)}
+                                        >
+                                        {time}
+                                        </button>
+                                    ))}
+                                    </div>
+                                );
+                                } else {
+                                // Если доступных элементов времени нет, выводим сообщение и кнопку "Choose another barber"
+                                return (
+                                    <div key={el.date}>
+                                    <h4>Choose another date</h4>
+                                    <h5>Or</h5>
+                                    <Link to="/specialists">
+                                        <button>Choose another barber</button>
+                                    </Link>
+                                    </div>
+                                );
+                                }
+                            })}
+                        </div>
                     </div>
+
+
+
+
+                    
+                    {shouldRedirect && (
+                        <Link to="/specialists/services/dateAndTime/recording">
+                            <button className={styles.Btn}>Go to services</button>
+                        </Link>
+                    )}
                   </div>
                 </div>
               );
