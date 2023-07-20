@@ -71,11 +71,25 @@
                                             margin-right: 10px;
                                             background-color: rgb(199, 199, 199);
                                             transition: 0.3s;
-    
+                                            
                                             &.green {
                                                 color: white;
                                                 background-color: rgb(2, 48, 2);
+                                                transition: 0.3s;
+                                                
+                                                &:hover {
+                                                    color: white;
+                                                    cursor: pointer;
+                                                    background-color: rgb(4, 80, 4);
+                                                }
+                                            }
+                                            
+                                            &.choose {
+                                                color: white;
+                                                background-color: rgb(2, 48, 2);
+                                                transition: 0.3s;
 
+                                                  
                                                 &:hover {
                                                     color: white;
                                                     cursor: pointer;

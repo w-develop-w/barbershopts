@@ -5,7 +5,7 @@ import { Barbers, DatesAndTime } from "../../models/models"
 import { RootState } from "../../store/store.index"
 import styles from "./Specialists.module.scss"
 import { useDispatch, useSelector } from "react-redux"
-import { setChoosedImageBarber, setChoosedStatusBarber, setRecordingTime, setChoosedNameBarber, setPercentsOnPrice } from "../../store/dataSlice";
+import { setChoosedImageBarber, setChoosedStatusBarber, setRecordingTime, setChoosedNameBarber, setPercentsOnPrice, setRecordingDate } from "../../store/dataSlice";
 
 
 function Specialists() {
@@ -56,15 +56,23 @@ function Specialists() {
 
 
 
-    const clickOnTime = (image: string, status: string, name:string, time: string, price: string ) => {
+    const clickOnTime = (image: string, status: string, name:string, time?: string, price?: string, date?:string ) => {
         dispatch(setChoosedImageBarber(image))
         dispatch(setChoosedStatusBarber(status))
         dispatch(setChoosedNameBarber(name))
-        dispatch(setRecordingTime(time))
-        dispatch(setPercentsOnPrice(price))
 
+        if(time) {
+            dispatch(setRecordingTime(time))
+        }
 
+        if(price) {
+            dispatch(setPercentsOnPrice(price))
+        }
 
+        
+        if(date) {
+            dispatch(setRecordingDate(date))
+        }
     }
 
 
@@ -77,43 +85,94 @@ function Specialists() {
                 el.workDay === true && (
                 <li className={styles.item} key={el.id}>
                     <div className={styles.content}>
-                    <img src={el.image} alt="Barber" />
-                    <div>
-                        <h3>{el.status}</h3>
-                        <h3>{el.name}</h3>
+                        <img src={el.image} alt="Barber" />
                         <div>
-                        <ul>
-                            {el.datesAndTime.map((element: DatesAndTime, index: number) => (
-                                 element.date === recordingDate && (
-                                <li key={index}>
-                                    <h3> {element.date} </h3>
-                                    {element.time.map((timeElement, index) => {
-                                    const isAvailable = element.access[index] >= timeForServiceFact;
-                                    const isBooking = element.booking[index];
-                                    const isDisabled = !isAvailable || !isBooking; 
-        
-                                    return (
-                                        <Link
-                                        key={index}
-                                        to={getToPath(location.pathname)}
-                                        className={styles.link}
-                                        >
-                                        <button
-                                            key={timeElement}
-                                            className={`${isAvailable && isBooking ? styles.green : ""}`}
-                                            disabled={isDisabled}
-                                            onClick={() => clickOnTime(el.image, el.status, el.name, timeElement, el.price)}
-                                        >
-                                            {timeElement}
-                                        </button>
-                                        </Link>
-                                    );
-                                    })}
-                                </li> )
-                            ))}
-                        </ul>
+                            <h3>{el.status}</h3>
+                            <h3>{el.name}</h3>
+                            <div>
+                                <ul>
+                                    {location.pathname === "/dateAndTime/services/specialists"  &&  el.datesAndTime.map((element: DatesAndTime, index: number) => (
+                                        element.date === recordingDate && (
+                                        <li key={index}>
+                                            <h3> {element.date} </h3>
+                                            {element.time.map((timeElement, index) => {
+                                            const isAvailable = element.access[index] >= timeForServiceFact;
+                                            const isBooking = element.booking[index];
+                                            const isDisabled = !isAvailable || !isBooking; 
+                
+                                            return (
+                                                <Link
+                                                key={index}
+                                                to={getToPath(location.pathname)}
+                                                className={styles.link}
+                                                >
+                                                <button
+                                                    key={timeElement}
+                                                    className={`${isAvailable && isBooking ? styles.green : ""}`}
+                                                    disabled={isDisabled}
+                                                    onClick={() => clickOnTime(el.image, el.status, el.name, timeElement, el.price, element.date)}
+                                                >
+                                                    {timeElement}
+                                                </button>
+                                                </Link>
+                                            );
+                                            })}
+                                        </li> )
+                                    ))}
+
+
+                                    {
+                                        location.pathname === "/services/specialists" && el.datesAndTime.map((element: DatesAndTime, index: number) => (
+                                         
+                                        <li key={index}>
+                                            <h3> {element.date} </h3>
+                                            {element.time.map((timeElement, index) => {
+                                            const isAvailable = element.access[index] >= timeForServiceFact;
+                                            const isBooking = element.booking[index];
+                                            const isDisabled = !isAvailable || !isBooking; 
+                
+                                            return (
+                                                <Link
+                                                key={index}
+                                                to={getToPath(location.pathname)}
+                                                className={styles.link}
+                                                >
+                                                <button
+                                                    key={timeElement}
+                                                    className={`${isAvailable && isBooking ? styles.green : ""}`}
+                                                    disabled={isDisabled}
+                                                    onClick={() => clickOnTime(el.image, el.status, el.name, timeElement, el.price, element.date)}
+                                                >
+                                                    {timeElement}
+                                                </button>
+                                                </Link>
+                                            );
+                                            })}
+                                        </li> ))
+                                    }
+
+
+                                    {
+                                        location.pathname === "/specialists" &&  (
+                                         
+                                        <li>
+                                                <Link
+                                                to={getToPath(location.pathname)}
+                                                className={styles.link}
+                                                >
+                                                    <button
+                                                        className={styles.choose}
+                                                        onClick={() => clickOnTime(el.image, el.status, el.name)}
+                                                    >
+                                                        Choose
+                                                    </button>
+                                                </Link>                                            
+                                        </li> )
+                                    }
+                                
+                                </ul>
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </li> )
                 ))}

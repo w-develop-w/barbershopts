@@ -50,6 +50,7 @@
                     border: none;
                     border-radius: 20px;
                     padding: 10px 20px;
+                    transition: 0.3s;
 
                     &:hover {
                         cursor: pointer;
@@ -71,6 +72,12 @@
             border: none;
             border-radius: 20px;
             padding: 10px 20px;
+            transition: 0.3s;
+
+            &:hover {
+                cursor: pointer;
+                background-color: rgb(3, 65, 3);
+            }
         }
     }
 }

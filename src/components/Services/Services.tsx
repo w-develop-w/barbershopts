@@ -66,7 +66,7 @@ function Services() {
 
         // console.log(currentPath)
         if (currentPath === "/specialists/services") {
-            return "/specialists/services/recording";
+            return "/specialists/services/dataAndTime";
         } 
         else if (currentPath === "/dateAndTime/services") {
             return "/dateAndTime/services/specialists";

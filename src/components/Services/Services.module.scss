@@ -25,9 +25,11 @@
                     border-radius: 20px;
                     background-color: white;
                     // align-items: flex-start;
-
+                    transition: 0.3s;
+                    
                     &:hover {
                         cursor: pointer;
+                        background-color: rgb(184, 184, 184);
                     }
 
                     h3 {
