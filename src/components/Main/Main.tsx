@@ -2,14 +2,22 @@ import React from "react"
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import styles from "./Main.module.scss"
-import { setRecordingDate, setRecordingTime } from "../../store/dataSlice";
+import { setChoosedImageBarber, setChoosedStatusBarber, setChoosedNameBarber,  setRecordingDate, setRecordingTime, setChoosedService, setPriceChoosedService, setTimeForServiceFact, setPercentsOnPrice } from "../../store/dataSlice";
 // import { Link } from 'react-router-dom';
 
 function Main() {
 
     const dispatch = useDispatch()
+    dispatch(setChoosedImageBarber(""));
+    dispatch(setChoosedStatusBarber(""));
+    dispatch(setChoosedNameBarber(""));
     dispatch(setRecordingDate(""));
     dispatch(setRecordingTime(""));
+    dispatch(setChoosedService(""));
+    dispatch(setPriceChoosedService(0));
+    dispatch(setTimeForServiceFact(0));
+    dispatch(setPercentsOnPrice(""));
+  
 
     return (
         <div className={styles.container}>

@@ -17,7 +17,7 @@ interface RootState {
     choosedService: string,
     priceChoosedService: number, 
     percentsOnPrice: string,
-    timeForServiceFact: number
+    timeForServiceFact: number,
 }
 
 const initialState: RootState = {
@@ -30,7 +30,7 @@ const initialState: RootState = {
     choosedService: "", 
     priceChoosedService: 0,
     percentsOnPrice: "",
-    timeForServiceFact: 0 
+    timeForServiceFact: 0,
 }
 
 const dataOfBarbershopSlice = createSlice({
@@ -67,6 +67,7 @@ const dataOfBarbershopSlice = createSlice({
         setTimeForServiceFact: (state, action: PayloadAction<number>) => {
             state.timeForServiceFact = action.payload
         }
+
     },
 })
 

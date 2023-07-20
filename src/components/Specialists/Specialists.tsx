@@ -1,7 +1,6 @@
 import React from "react"
 import { Link, useLocation } from "react-router-dom"
 import { useSpecialistsQuery } from "../../api/fetchDataSpecialists"
-import { useServicingQuery } from "../../api/fetchDataServices"
 import { Barbers, DatesAndTime } from "../../models/models"
 import { RootState } from "../../store/store.index"
 import styles from "./Specialists.module.scss"
@@ -55,12 +54,17 @@ function Specialists() {
         }
     };
 
+
+
     const clickOnTime = (image: string, status: string, name:string, time: string, price: string ) => {
         dispatch(setChoosedImageBarber(image))
         dispatch(setChoosedStatusBarber(status))
         dispatch(setChoosedNameBarber(name))
         dispatch(setRecordingTime(time))
         dispatch(setPercentsOnPrice(price))
+
+
+
     }
 
 

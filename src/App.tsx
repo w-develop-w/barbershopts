@@ -13,15 +13,17 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Main/>} />
                     <Route path="/specialists" element={<Specialists/>} />
-                    <Route path="/services/specialists" element={<Specialists/>} />
-                    <Route path="/dateAndTime/services/specialists" element={<Specialists/>} />
-                    <Route path="/services/specialists/recording" element={<Recording/>} />
-                    <Route path="/dateAndTime/services/specialists/recording" element={<Recording/>} />
-                    <Route path="/services" element={<Services/>} />
                     <Route path="/specialists/services" element={<Services/>} />
-                    <Route path="/dateAndTime/services" element={<Services/>} />
                     <Route path="/specialists/services/recording" element={<Recording/>} />
+
+                    <Route path="/services" element={<Services/>} />
+                    <Route path="/services/specialists" element={<Specialists/>} />
+                    <Route path="/services/specialists/recording" element={<Recording/>} />
+                    
                     <Route path="/dateAndTime" element={<DateAndTime/>} />
+                    <Route path="/dateAndTime/services" element={<Services/>} />
+                    <Route path="/dateAndTime/services/specialists" element={<Specialists/>} />
+                    <Route path="/dateAndTime/services/specialists/recording" element={<Recording/>} />
                 </Routes>
             </div>
         </Router>
