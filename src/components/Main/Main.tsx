@@ -1,9 +1,16 @@
 import React from "react"
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import styles from "./Main.module.scss"
+import { setRecordingDate, setRecordingTime } from "../../store/dataSlice";
 // import { Link } from 'react-router-dom';
 
 function Main() {
+
+    const dispatch = useDispatch()
+    dispatch(setRecordingDate(""));
+    dispatch(setRecordingTime(""));
+
     return (
         <div className={styles.container}>
             <div className={styles.modal}>

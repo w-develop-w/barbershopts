@@ -15,7 +15,7 @@ function Specialists() {
     const timeForServiceFact = useSelector((state: RootState) => state.dataOfBarbershop.timeForServiceFact)
     const recordingDate = useSelector((state: RootState) => state.dataOfBarbershop.recordingDate)
 
-    // console.log(timeForServiceFact)
+    console.log(timeForServiceFact)
 
     const {
         data: dataBarbers,

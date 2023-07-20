@@ -23,7 +23,6 @@ function Services() {
         isLoading: isLoadingServicing,
     } = useServicingQuery(null)
 
-    console.log(dataServing)
 
     const choosedService = useSelector(
         (state: RootState) => state.dataOfBarbershop.choosedService
@@ -31,7 +30,7 @@ function Services() {
 
 
     const handleChoosedServiceClick = (service: string, price: number) => {
-        console.log(service)
+        // console.log(service)
         // console.log(price)
         dispatch(setChoosedService(service))
         dispatch(setPriceChoosedService(price))
@@ -42,7 +41,7 @@ function Services() {
         // 1.5 or 1 or 0.75 or 0.5  
         dataServing?.map((item: any) => {
             if (item.name === service) {
-                console.log(item.time)
+                // console.log(item.time)
                 dispatch(setTimeForServiceFact(item.time))
             }
         })
