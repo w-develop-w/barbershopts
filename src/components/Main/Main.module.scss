@@ -1,18 +1,13 @@
 @import "../../fonts.module.scss";
 
-* {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-}
-
 .container {
     display: flex;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
-    height: 100vh; 
+    height: 100vh;
 
     .modal {
-        font-family: 'Nunito', sans-serif;
+        font-family: "Nunito", sans-serif;
         font-weight: 700;
         background-color: black;
         padding: 90px;
@@ -20,35 +15,106 @@
 
         h2 {
             color: white;
-            // font-family: 'Roboto', sans-serif;
         }
 
-        
         ul {
             all: unset;
             display: flex;
             flex-direction: column;
             gap: 30px;
+
             li {
                 all: unset;
                 .link {
                     all: unset;
                     button {
                         all: unset;
-                        text-transform: uppercase;
-                        font-family: "Franklin Gothic Medium", "Arial Narrow", Arial,
-                        sans-serif;
                         width: 300px;
                         color: white;
-                        background-color: rgb(2, 48, 2);
-                        // background-color: white;
+                        background-color: rgb(7, 88, 7);
                         padding: 10px 20px;
                         border-radius: 10px;
                         transition: 0.3s;
-    
+
                         &:hover {
                             cursor: pointer;
-                            background-color: rgb(121, 121, 121);
+                            background-color: rgb(10, 112, 10);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        .modal {
+            padding: 50px;
+            h2 {
+                font-size: 24px;
+            }
+            ul {
+                li {
+                    .link {
+                        button {
+                            width: 250px;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .modal {
+            padding: 30px;
+            h2 {
+                font-size: 20px;
+            }
+            ul {
+                li {
+                    .link {
+                        button {
+                            width: 200px;
+                            font-size: 14px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 420px) {
+        .modal {
+            padding: 20px;
+            h2 {
+                font-size: 18px;
+            }
+            ul {
+                li {
+                    .link {
+                        button {
+                            width: 180px;
+                            font-size: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 350px) {
+        .modal {
+            padding: 20px;
+            h2 {
+                font-size: 16px;
+            }
+            ul {
+                li {
+                    .link {
+                        button {
+                            width: 120px;
+                            font-size: 10px;
                         }
                     }
                 }
