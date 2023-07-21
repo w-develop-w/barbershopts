@@ -3,7 +3,6 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom"
 import styles from "./Main.module.scss"
 import { setChoosedImageBarber, setChoosedStatusBarber, setChoosedNameBarber,  setRecordingDate, setRecordingTime, setChoosedService, setPriceChoosedService, setTimeForServiceFact, setPercentsOnPrice } from "../../store/dataSlice";
-// import { Link } from 'react-router-dom';
 
 function Main() {
 

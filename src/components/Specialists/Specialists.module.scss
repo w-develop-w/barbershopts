@@ -1,3 +1,4 @@
+@import "../../fonts.module.scss";
 .container {
     display: flex;
     align-items: center;
@@ -20,8 +21,9 @@
             .item {
                 list-style: none;
                 padding: 15px 30px;
-                border-radius: 20px;
-                background-color: white;
+                border-radius: 10px;
+                background-color: black;
+                // background-color: white;
                 .content {
                     display: flex;
                     gap: 20px;
@@ -29,7 +31,8 @@
                     img {
                         width: 150px;
                         height: 90px;
-                        border-radius: 15px;
+                        border: 3px solid rgb(2, 48, 2);
+                        border-radius: 7px;
                     }
 
                     div {
@@ -38,16 +41,19 @@
                         justify-content: center;
                         h3,
                         h2 {
+                            color: white;
                             text-transform: uppercase;
                             margin: 0;
                         }
-
+                        
                         h3 {
+                            color: white;
                             text-transform: uppercase;
                             font-size: 14px;
                         }
-
+                        
                         h2 {
+                            color: white;
                             text-transform: uppercase;
                             font-size: 18px;
                         }

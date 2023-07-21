@@ -1,15 +1,27 @@
+@import "../../fonts.module.scss";
+
+* {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+}
+
 .container {
     display: flex;
-    align-items: center; /* Центрирует контент вертикально */
-    justify-content: center; /* Центрирует контент горизонтально */
-    height: 100vh; /* Занимает 100% высоты экрана */
+    align-items: center; 
+    justify-content: center;
+    height: 100vh; 
 
     .modal {
-        // height: 500px;
-        // width: 500px;
-        background-color: rgb(199, 199, 199);
+        font-family: 'Nunito', sans-serif;
+        font-weight: 700;
+        background-color: black;
         padding: 90px;
         border-radius: 20px;
+
+        h2 {
+            color: white;
+            // font-family: 'Roboto', sans-serif;
+        }
 
         
         ul {
@@ -26,9 +38,10 @@
                         text-transform: uppercase;
                         font-family: "Franklin Gothic Medium", "Arial Narrow", Arial,
                         sans-serif;
-                        // font-family: Verdana, Geneva, Tahoma, sans-serif;
                         width: 300px;
-                        background-color: white;
+                        color: white;
+                        background-color: rgb(2, 48, 2);
+                        // background-color: white;
                         padding: 10px 20px;
                         border-radius: 10px;
                         transition: 0.3s;
