@@ -1,15 +1,16 @@
 .container {
     display: flex;
-    align-items: center; /* Центрирует контент вертикально */
-    justify-content: center; /* Центрирует контент горизонтально */
-    height: 100vh; /* Занимает 100% высоты экрана */
+    align-items: center; 
+    justify-content: center; 
+    height: 100vh; 
 
     .modal {
-        background-color: rgb(199, 199, 199);
+        background-color: black;
         padding: 90px;
         border-radius: 20px;
 
         h3 {
+            color: white;
             text-transform: uppercase;
         }
 
@@ -19,21 +20,23 @@
                 display: flex;
                 gap: 10px;
                 list-style: none;
+                flex-wrap: wrap;
 
                 button {
                     border: none;
                     border-radius: 20px;
                     padding: 10px 20px;
                     transition: 0.3s;
+                    background-color: rgb(7, 88, 7);
                     &:hover {
                         cursor: pointer;
-                        background-color: rgb(181, 181, 181);
+                        background-color: rgb(10, 112, 10);
                     }
-
+                    
                     &.active {
                         color: white;
-                        background-color: rgb(121, 120, 120);
-                    }
+                        background-color: rgb(23, 230, 23);
+                   }
                 }
             }
         }
@@ -45,30 +48,32 @@
                 gap: 10px;
                 list-style: none;
                 transition: 0.3s;
+                flex-wrap: wrap;
 
                 button {
                     border: none;
                     border-radius: 20px;
                     padding: 10px 20px;
                     transition: 0.3s;
-
+                    background-color: rgb(7, 88, 7);
+                    
                     &:hover {
                         cursor: pointer;
-                        background-color: rgb(181, 181, 181);
+                        background-color: rgb(10, 112, 10);
                     }
-
+                    
                     &.active {
                         color: white;
-                        background-color: rgb(121, 120, 120);
+                        background-color: rgb(23, 230, 23);
                     }
                 }
             }
         }
 
         .Btn {
-            margin-top: 10px;
-            color: white;
-            background-color: rgb(2, 48, 2);
+            margin-top: 20px;
+            color: black;
+            background-color: white;
             border: none;
             border-radius: 20px;
             padding: 10px 20px;
@@ -76,8 +81,135 @@
 
             &:hover {
                 cursor: pointer;
-                background-color: rgb(3, 65, 3);
+                background-color: rgb(139, 141, 139);
             }
         }
     }
 }
+
+
+@import "../../fonts.module.scss";
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .modal {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    background-color: black;
+    padding: 90px;
+    border-radius: 20px;
+
+    h2 {
+      color: white;
+    }
+
+    ul {
+      all: unset;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+
+      li {
+        all: unset;
+        .link {
+          all: unset;
+          button {
+            all: unset;
+            width: 300px;
+            color: white;
+            background-color: rgb(7, 88, 7);
+            padding: 10px 20px;
+            border-radius: 10px;
+            transition: 0.3s;
+
+            &:hover {
+              cursor: pointer;
+              background-color: rgb(10, 112, 10);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .modal {
+      padding: 50px;
+      h2 {
+        font-size: 24px;
+      }
+      ul {
+        li {
+          .link {
+            button {
+              width: 250px;
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .modal {
+      padding: 30px;
+      h2 {
+        font-size: 20px;
+      }
+      ul {
+        li {
+          .link {
+            button {
+              width: 200px;
+              font-size: 14px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 420px) {
+    .modal {
+      padding: 20px;
+      h2 {
+        font-size: 18px;
+      }
+      ul {
+        li {
+          .link {
+            button {
+              width: 180px;
+              font-size: 12px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .modal {
+      padding: 15px;
+      h2 {
+        font-size: 16px;
+      }
+      ul {
+        li {
+          .link {
+            button {
+              width: 150px;
+              font-size: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+

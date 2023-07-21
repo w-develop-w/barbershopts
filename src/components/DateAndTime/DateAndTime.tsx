@@ -72,7 +72,6 @@ function DateAndTime() {
                         ))}
                       </div>
                     </div>
-                    {/* <h3>Choose time:</h3> */}
 
            
 
@@ -81,12 +80,10 @@ function DateAndTime() {
                             {item.datesAndTime
                             .filter((el) => el.date === recordingDate)
                             .map((el) => {
-                                // Создаем новый массив с доступными элементами времени
                                 const availableTimes = el.time.filter(
                                 (element, index) => el.access[index] >= timeForServiceFact && el.booking[index] === true
                                 );
 
-                                // Проверяем, есть ли доступные элементы времени, и отображаем кнопки
                                 if (availableTimes.length > 0) {
                                 return (
                                     <div key={el.date}>
@@ -103,7 +100,6 @@ function DateAndTime() {
                                     </div>
                                 );
                                 } else {
-                                // Если доступных элементов времени нет, выводим сообщение и кнопку "Choose another barber"
                                 return (
                                     <div key={el.date}>
                                     <h4>Choose another date</h4>
@@ -118,10 +114,6 @@ function DateAndTime() {
                         </div>
                     </div>
 
-
-
-
-                    
                     {shouldRedirect && (
                         <Link to="/specialists/services/dateAndTime/recording">
                             <button className={styles.Btn}>Go to services</button>
@@ -138,7 +130,6 @@ function DateAndTime() {
     );
   }
 
-  // В остальных случаях отображаем этот код:
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
