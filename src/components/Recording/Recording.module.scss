@@ -1,76 +1,151 @@
-.container {
-    display: flex;
-    align-items: center; /* Центрирует контент вертикально */
-    justify-content: center; /* Центрирует контент горизонтально */
-    height: 100vh; /* Занимает 100% высоты экрана */
+@import "../../fonts.module.scss";
 
-    .modal {
-        background-color: rgb(199, 199, 199);
-        padding: 40px;
-        border-radius: 20px;
-        h3 {
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+  .modal {
+    font-family: "Nunito", sans-serif;
+    padding: 40px;
+    border-radius: 20px;
+    background-color: black;
+
+    h3 {
+      color: white;
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+
+    .content {
+      display: flex;
+      gap: 20px;
+
+      img {
+        width: 200px;
+        height: 130px;
+        border-radius: 15px;
+      }
+
+      .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .barber {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          h3,
+          h2,
+          h4 {
+             color: white;
             text-transform: uppercase;
-            margin-top: 0;
+            margin: 0;
+            font-size: 18px;
+          }
+
+          h4 {
+            font-size: 12px;
+          }
         }
-        .content {
+
+        .dataAndTime {
+          margin-top: 20px;
+          margin-bottom: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+
+          div {
             display: flex;
-            // flex-direction: column;
+            justify-content: space-between;
             gap: 20px;
 
-            img {
-                width: 200px;
-                height: 130px;
-                border-radius: 15px;
-                // border: 3px solid red;
+            div {
+              display: flex;
             }
-
-            .info {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-
-                .barber {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    h3,
-                    h2, 
-                    h4 {
-                        text-transform: uppercase;
-                        margin: 0;
-                        font-size: 18px;
-                    }
-
-                    h4 {
-                        font-size: 12px;
-                    }
-                }
-
-                .dataAndTime {
-                    margin-top: 20px;
-                    margin-bottom: 0;
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-
-                    div {
-                        display: flex;
-                        justify-content: space-between;
-                        gap: 20px;
-                        div {
-                            display: flex;
-                        }
-                    }
-                    gap: 10px;
-
-                    text-transform: uppercase;
-                    h3,
-                    h2 {
-                        margin: 0;
-                        font-size: 14px;
-                    }
-                }
-            }
+          }
+          gap: 10px;
+          text-transform: uppercase;
+          h3,
+          h2 {
+            margin: 0;
+            font-size: 14px;
+          }
         }
+      }
     }
+
+
+    @media screen and (max-width: 768px) {
+      padding: 30px; 
+      .content {
+        flex-direction: column; 
+        gap: 10px;
+        align-items: center; 
+        align-items: flex-start;
+
+        img {
+          display: flex;
+          width: 150px; 
+          height: 100px; 
+        }
+      }
+    }
+
+
+    @media screen and (max-width: 480px) {
+      padding: 20px; 
+      .modal {
+        h3 {
+          font-size: 16px; 
+        }
+        .info {
+          .barber {
+            h3,
+            h2,
+            h4 {
+              font-size: 14px; 
+            }
+          }
+
+          .dataAndTime {
+            h3,
+            h2 {
+              font-size: 12px; 
+            }
+          }
+        }
+      }
+    }
+
+
+    @media screen and (max-width: 320px) {
+      padding: 15px; 
+      .modal {
+        h3 {
+          font-size: 14px; 
+        }
+        .info {
+          .barber {
+            h3,
+            h2,
+            h4 {
+              font-size: 12px; 
+            }
+          }
+
+          .dataAndTime {
+            h3,
+            h2 {
+              font-size: 10px; 
+            }
+          }
+        }
+      }
+    }
+  }
 }
