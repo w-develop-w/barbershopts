@@ -1,52 +1,89 @@
+@import "../../fonts.module.scss";
+
 .container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.modal {
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  background-color: black;
+  padding: 40px; 
+  border-radius: 20px;
+
+  .list {
     display: flex;
-    align-items: center; /* Центрирует контент вертикально */
-    justify-content: center; /* Центрирует контент горизонтально */
-    height: 100vh; /* Занимает 100% высоты экрана */
+    flex-direction: column;
+    gap: 20px;
+    max-height: 300px;
+    padding: 0 10px;
+    overflow-x: auto;
 
-    .modal {
-        background-color: rgb(199, 199, 199);
-        padding: 70px;
+    .link {
+      all: unset;
+      .item {
+        list-style: none;
+        padding: 15px 40px; 
         border-radius: 20px;
+        background-color: rgb(7, 88, 7);
+        transition: 0.3s;
 
-        .list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            max-height: 400px;
-            padding: 0 10px;
-            overflow-x: auto;
-
-            .link {
-                all: unset;
-                .item {
-                    list-style: none;
-                    padding: 15px 200px;
-                    border-radius: 20px;
-                    background-color: white;
-                    // align-items: flex-start;
-                    transition: 0.3s;
-                    
-                    &:hover {
-                        cursor: pointer;
-                        background-color: rgb(184, 184, 184);
-                    }
-
-                    h3 {
-                        text-transform: uppercase;
-                        font-size: 20px;
-                        margin: 0;
-                    }
-                    
-                    h2 {
-                        text-transform: uppercase;
-                        font-size: 20px;
-                        margin: 0;
-                        color: red;
-                    }
-    
-                }
-            }
+        &:hover {
+          cursor: pointer;
+          background-color: rgb(10, 112, 10);
         }
+
+        h3 {
+          text-transform: uppercase;
+          font-size: 20px;
+          margin: 0;
+          color: white;
+        }
+
+        h2 {
+          text-transform: uppercase;
+          font-size: 20px;
+          margin: 0;
+          color: black;
+        }
+      }
     }
+  }
+
+  
+  @media screen and (max-width: 768px) {
+    padding: 30px; 
+    .list {
+      .link {
+        .item {
+          padding: 15px 20px; 
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 20px; 
+    .list {
+      .link {
+        .item {
+          padding: 15px 10px; 
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 320px) {
+    padding: 10px; 
+    .list {
+      .link {
+        .item {
+          padding: 15px 5px; 
+        }
+      }
+    }
+  }
 }

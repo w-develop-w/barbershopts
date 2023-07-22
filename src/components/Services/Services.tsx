@@ -9,13 +9,9 @@ import { setChoosedService, setPriceChoosedService, setTimeForServiceFact } from
 
 function Services() {
     const { data, error, isLoading } = useServicingQuery(null);
-    const location = useLocation(); // Получаем текущий путь
+    const location = useLocation();
 
     const dispatch = useDispatch()
-    // const choosedService = useSelector(
-    //     (state: RootState) => state.dataOfBarbershop.choosedService
-    // )
-
 
     const {
         data: dataServing,
@@ -30,18 +26,12 @@ function Services() {
 
 
     const handleChoosedServiceClick = (service: string, price: number) => {
-        // console.log(service)
-        // console.log(price)
+       
         dispatch(setChoosedService(service))
         dispatch(setPriceChoosedService(price))
-
-        // let timeForServiceFact: number = 0
-
-        // defining of accessed time for service
-        // 1.5 or 1 or 0.75 or 0.5  
+ 
         dataServing?.map((item: any) => {
             if (item.name === service) {
-                // console.log(item.time)
                 dispatch(setTimeForServiceFact(item.time))
             }
         })
@@ -53,18 +43,14 @@ function Services() {
 
     if (error) {
         if ("status" in error) {
-            // Обработка ошибки FetchBaseQueryError
             return <div>Error: {error.status}</div>;
         } else {
-            // Обработка ошибки SerializedError
             return <div>Error: {error.message}</div>;
         }
     }
 
-    // Функция для определения правильного пути в зависимости от текущего пути
     const getToPath = (currentPath: string): string => {
 
-        // console.log(currentPath)
         if (currentPath === "/specialists/services") {
             return "/specialists/services/dataAndTime";
         } 
@@ -75,7 +61,7 @@ function Services() {
             return "/services/specialists";
         } 
         else {
-            return "/"; // Возвращаем что-то по умолчанию, если необходимо
+            return "/"; 
         }
     };
 
@@ -87,7 +73,7 @@ function Services() {
                         data.map((el: Servicing) => (
                             <Link
                                 className={styles.link}
-                                to={getToPath(location.pathname)} // Устанавливаем правильный путь
+                                to={getToPath(location.pathname)} 
                                 key={el.id}
                             >
                                 <li className={styles.item} onClick={() => handleChoosedServiceClick(el.name, el.price)}>

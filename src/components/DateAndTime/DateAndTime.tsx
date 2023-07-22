@@ -58,7 +58,7 @@ function DateAndTime() {
               return (
                 <div key={item.id} className={styles.container}>
                   <div className={styles.modal}>
-                    <h3>Choose date:</h3>
+                    <h3 className={styles.chooseDate}>Choose date:</h3>
                     <div className={styles.listDate}>
                       <div className={styles.itemDate}>
                         {item.datesAndTime.map((el) => (
@@ -133,7 +133,7 @@ function DateAndTime() {
   return (
     <div className={styles.container}>
       <div className={styles.modal}>
-        <h3>Choose date:</h3>
+        <h3 className={styles.chooseDate}>Choose date:</h3>
         <div className={styles.listDate}>
           <div className={styles.itemDate}>
             <button

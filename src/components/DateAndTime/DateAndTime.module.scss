@@ -9,6 +9,12 @@
         padding: 90px;
         border-radius: 20px;
 
+        .chooseDate {
+            margin-top: 0;
+            color: white;
+            text-transform: uppercase;
+        }
+
         h3 {
             color: white;
             text-transform: uppercase;
@@ -40,6 +46,7 @@
                 }
             }
         }
+        
 
         .listTime {
             padding: 0;
