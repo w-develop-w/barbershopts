@@ -35,7 +35,7 @@
           "booking": [
             false,
             false,
-            true
+            false
           ],
           "access": [
             1.5,
