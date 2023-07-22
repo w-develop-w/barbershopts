@@ -147,7 +147,7 @@ function Specialists() {
                                 className={styles.link}
                               >
                                 <button
-                                  className={styles.choose}
+                                //   className={styles.choose}
                                   onClick={() => clickOnTime(el.image, el.status, el.name)}
                                 >
                                   Choose
@@ -174,7 +174,7 @@ function Specialists() {
           });
         }) && (
           <Link to="/dateAndTime">
-            <button>Choose another date</button>
+            <button className={styles.chooseAnotherDate}>Choose another date</button>
           </Link>
         )}
       </div>
