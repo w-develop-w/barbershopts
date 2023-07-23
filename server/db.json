@@ -15,9 +15,9 @@
             "14:00"
           ],
           "booking": [
-            true,
             false,
-            true
+            false,
+            false
           ],
           "access": [
             1.5,
@@ -81,7 +81,7 @@
           "booking": [
             true,
             false,
-            true
+            false
           ],
           "access": [
             0.5,
@@ -126,7 +126,7 @@
           ],
           "booking": [
             true,
-            true,
+            false,
             true
           ],
           "access": [

@@ -20,6 +20,10 @@
             text-transform: uppercase;
         }
 
+        h4, h5 {
+            color: white;
+        }
+
         .listDate {
             padding: 0;
             .itemDate {
@@ -97,51 +101,51 @@
 
 @import "../../fonts.module.scss";
 
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+// .container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   height: 100vh;
 
-  .modal {
-    font-family: 'Nunito', sans-serif;
-    font-weight: 700;
-    background-color: black;
-    padding: 90px;
-    border-radius: 20px;
+//   .modal {
+//     font-family: 'Nunito', sans-serif;
+//     font-weight: 700;
+//     background-color: black;
+//     padding: 90px;
+//     border-radius: 20px;
 
-    h2 {
-      color: white;
-    }
+//     h2 {
+//       color: white;
+//     }
 
-    ul {
-      all: unset;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+//     ul {
+//       all: unset;
+//       display: flex;
+//       flex-direction: column;
+//       gap: 30px;
 
-      li {
-        all: unset;
-        .link {
-          all: unset;
-          button {
-            all: unset;
-            width: 300px;
-            color: white;
-            background-color: rgb(7, 88, 7);
-            padding: 10px 20px;
-            border-radius: 10px;
-            transition: 0.3s;
+//       li {
+//         all: unset;
+//         .link {
+//           all: unset;
+//           button {
+//             all: unset;
+//             width: 300px;
+//             color: white;
+//             background-color: rgb(7, 88, 7);
+//             padding: 10px 20px;
+//             border-radius: 10px;
+//             transition: 0.3s;
 
-            &:hover {
-              cursor: pointer;
-              background-color: rgb(10, 112, 10);
-            }
-          }
-        }
-      }
-    }
-  }
+//             &:hover {
+//               cursor: pointer;
+//               background-color: rgb(10, 112, 10);
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
 
   @media screen and (max-width: 768px) {
     .modal {
@@ -218,5 +222,5 @@
       }
     }
   }
-}
+// }
 
