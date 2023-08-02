@@ -49,7 +49,7 @@ function Specialists() {
     }
   };
 
-  const clickOnTime = (image: string, status: string, name: string, time?: string, price?: string, date?: string) => {
+  const clickOnTime = (image: string, status: string, name: string, time?: string, price?: string, date?: string): void =>  {
     dispatch(setChoosedImageBarber(image));
     dispatch(setChoosedStatusBarber(status));
     dispatch(setChoosedNameBarber(name));
@@ -86,7 +86,7 @@ function Specialists() {
                             element.date === recordingDate && (
                               <li key={index}>
                                 <h3> {element.date} </h3>
-                                {element.time.map((timeElement, index) => {
+                                {element.time.map((timeElement: string, index: number) => {
                                   const isAvailable = element.access[index] >= timeForServiceFact;
                                   const isBooking = element.booking[index];
                                   const isDisabled = !isAvailable || !isBooking;

@@ -1,11 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { persistStore, persistReducer } from "redux-persist";
+import { persistStore, persistReducer, WebStorage } from "redux-persist";
 import storage from "redux-persist/es/storage/session";
 import dataOfBarbershopReducer from "./dataSlice";
 import fetchDataServices from "../api/fetchDataServices";
 import fetchDataSpecialists from "../api/fetchDataSpecialists";
 
-const persistConfig = {
+type TypePersisitConfig = {
+    key: string
+    storage: WebStorage
+}
+
+const persistConfig: TypePersisitConfig = {
   key: "root", // Ключ для хранения данных в хранилище
   storage, // Используем sessionStorage для сохранения данных
 //   serialize: false, 

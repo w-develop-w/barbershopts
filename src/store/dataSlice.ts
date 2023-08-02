@@ -1,13 +1,14 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-interface Service {
+
+type Service = {
     id: number
     name: string
     price: number
     time: number
 }
 
-interface RootState {
+type RootState = {
     allServices: Service[],
     choosedImageBarber: string,
     choosedStatusBarber: string,

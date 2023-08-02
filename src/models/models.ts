@@ -1,9 +1,9 @@
-export interface Root {
+export type Root = {
     barbers: Barbers[]
     servicing: Servicing[]
 }
 
-export interface Barbers {
+export type Barbers = {
     id: number
     image: string
     name: string
@@ -13,14 +13,14 @@ export interface Barbers {
     price: string
 }
 
-export interface DatesAndTime {
+export type DatesAndTime = {
     date: string
     time: string[]
     booking: boolean[]
     access: number[]
 }
 
-export interface Servicing {
+export type Servicing = {
     id: number
     name: string
     price: number

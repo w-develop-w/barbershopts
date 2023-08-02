@@ -108,7 +108,7 @@
           ],
           "booking": [
             true,
-            true,
+            false,
             false
           ],
           "access": [
@@ -127,7 +127,7 @@
           "booking": [
             true,
             false,
-            true
+            false
           ],
           "access": [
             0.5,

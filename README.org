@@ -1,0 +1,30 @@
+#+title: 💇🏽‍♂️Barbershopts
+#+begin_html
+<div align="center">
+		<img src="./public/img/screenshot.jpg">
+</div>
+
+
+#+end_html
+
+#+begin_center
+💇🏽‍♂️Barbershopts is site for recording to barber
+#+end_center
+
+** Installation👉
+*** 1. Clone this repository:
+#+begin_src bash
+  git clone https://github.com/w-develop-w/barbershopts.git
+#+end_src
+
+*** 2. Open terminal and paste this command: 
+#+begin_src bash
+  npm start
+#+end_src
+
+*** 3. Add other terminal and paste this command: 
+#+begin_src bash
+  npm run server
+#+end_src
+
+The project will run and you can test this mini project🔜
